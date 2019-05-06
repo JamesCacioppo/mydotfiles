@@ -65,7 +65,7 @@ function dot() {
     git commit -m "$1"
     git push
     cd $start_dir
-    unset $start_dir
+    unset start_dir
 }
 ##################
 # Computer hacks #
