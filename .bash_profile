@@ -58,12 +58,14 @@ function repo() {
 function dot() {
     start_dir=$(pwd) 
     cd ~/
-    cp -v .bash_profile ~/Documents/repos/mydotfiles
-    cp -v .vimrc ~/Documents/repos/mydotfiles
-    cd ~/Documents/repos/mydotfiles
-    git add .
-    git commit -m "$1"
-    git push
+    cp -v .bash_profile ~/Documents/repos/mydotfiles && \
+    cp -v .vimrc ~/Documents/repos/mydotfiles && \
+    cd ~/Documents/repos/mydotfiles && \
+    {
+        git add .
+        git commit -m "$1"
+        git push
+    } 
     cd $start_dir
     unset start_dir
 }
