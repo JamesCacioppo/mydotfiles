@@ -85,4 +85,10 @@ export HISTIGNORE="ls:ps:history"
 export PROMPT_COMMAND="history -a"
 shopt -s histappend
 shopt -s cmdhist
-
+# git fanciness
+source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=true
+YELLOW="\[$(tput setaf 5)\]" #colors range from 0-6
+RESET="\[$(tput sgr0)\]"
+export PS1="\u@\h:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
