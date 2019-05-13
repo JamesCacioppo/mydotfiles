@@ -33,14 +33,18 @@ function _gcloud_ssh() {
     fi
 }
 
-###########################################
-# Functions to change gcloud environments #
-###########################################
+# Functions to change gcloud environments
 function switch_to_devstaging() {
     gcloud container clusters get-credentials devstagingcluster1  --zone us-east4-a  --project gs-dev-staging
     gcloud config set project gs-dev-staging
     gcloud config set compute/zone us-east4-a
     gcloud config set compute/region us-east4
+}
+
+# Function to auth gcloud
+function auth_gcloud() {
+    gcloud auth login
+    gcloud auth configure-docker # auth docker to use gcloud docker image repo
 }
 
 ##############################
