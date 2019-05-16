@@ -22,8 +22,10 @@ set laststatus=2 "always show status line at bottom of window
 set relativenumber "show line number relative to cursor. disable with `set norelativenumber`
 set lazyredraw "helps with scrolling large files but may have delay issues when switching buffers
 "set mouse=a "allow using mouse to move and click, disabled due to copy paste problem
+set colorcolumn=80 "puts a vertical line out at 80 char for style guide
+highlight ColorColumn ctermbg=235 guibg=#2c2d27 "sets the color of vertical guide
 
-" Pluggin section
+" Pluggin section for vim-plug
 
 call plug#begin('~/.vim/plugged')
 
@@ -51,6 +53,21 @@ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
 call plug#end()
+
+"Configure ripgrep
+"" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
