@@ -56,7 +56,7 @@ function cabs() {
 }
 #cd to a repo
 function repo() {
-	cd /Users/jamescacioppo/Documents/repos/$1
+	cd ~/Documents/repos/$1
 }
 #cp all dotfiles to repo, commit, and push
 function dot() {
