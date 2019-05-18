@@ -1,4 +1,5 @@
 alias ll="ls -la"
+alias gs="git status"
 alias gssh=_gcloud_ssh #alias to Vinod's gssh function
 #The following aliases depend on fzf.  `brew install fzf`
 alias preview="fzf --preview 'cat {}'"
@@ -19,10 +20,10 @@ function dbash() {
 # Goolge Cloud stuff #
 ######################
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jamescacioppo/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/jamescacioppo/Downloads/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '~/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '~/Downloads/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/jamescacioppo/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/jamescacioppo/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '~/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '~/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 
 # gssh function from Vinod
 function _gcloud_ssh() {
