@@ -1,5 +1,6 @@
 alias ll="ls -la"
 alias gssh=_gcloud_ssh #alias to Vinod's gssh function
+#The following aliases depend on fzf.  `brew install fzf`
 alias preview="fzf --preview 'cat {}'"
 alias preview100="fzf --preview 'head -100 {}'"
 alias p="find . -type f | fzf --preview 'head -100 {}'"
