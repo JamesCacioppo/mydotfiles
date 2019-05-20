@@ -29,6 +29,7 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27 "sets the color of vertical guid
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeWinSize=50
 
 "Open and close NERDTree with ctrl+n
 map <C-n> :NERDTreeToggle<CR>
