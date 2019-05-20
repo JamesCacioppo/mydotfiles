@@ -25,6 +25,11 @@ set lazyredraw "helps with scrolling large files but may have delay issues when 
 set colorcolumn=80 "puts a vertical line out at 80 char for style guide
 highlight ColorColumn ctermbg=235 guibg=#2c2d27 "sets the color of vertical guide
 
+"Searching options
+set ignorecase "kinda obvi, no?
+set incsearch "search as char are entered
+set hlsearch "highlight all terms
+
 "NERDTree hacks
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
