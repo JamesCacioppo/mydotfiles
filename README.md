@@ -30,8 +30,8 @@ and plugins to supercharge your VIM experience.
 5. Clone this repo and copy dot files into place
 
     ```
-     git clone https://github.com/JamesCacioppo/mydotfiles.git
-     cp .* ~/
+    git clone https://github.com/JamesCacioppo/mydotfiles.git
+    cp .* ~/
     ```
 
 6. Run vim and install the plugins
