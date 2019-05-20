@@ -25,6 +25,16 @@ set lazyredraw "helps with scrolling large files but may have delay issues when 
 set colorcolumn=80 "puts a vertical line out at 80 char for style guide
 highlight ColorColumn ctermbg=235 guibg=#2c2d27 "sets the color of vertical guide
 
+"NERDTree hacks
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeAutoDeleteBuffer = 1
+
+"Open and close NERDTree with ctrl+n
+map <C-n> :NERDTreeToggle<CR>
+"Auto close if NERDTree is last pane open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Pluggin section for vim-plug
 
 call plug#begin('~/.vim/plugged')
