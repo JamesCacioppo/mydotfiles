@@ -161,3 +161,7 @@ filetype plugin indent on    " required
 nmap <C-j> <C-d>
 "map ctrl-k to ctrl-u for page up
 nmap <C-k> <C-u>
+"map ctrl-h to ^ for beginning of line
+nmap <C-h> ^
+"map ctrl-l to $ for end of line
+nmap <C-l> $
