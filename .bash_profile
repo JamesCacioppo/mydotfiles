@@ -70,6 +70,7 @@ function dot() {
         cd ~/
         cp -v .bash_profile ~/Documents/repos/mydotfiles && \
         cp -v .vimrc ~/Documents/repos/mydotfiles && \
+        cp -v .tmux.conf ~/Documents/repos/mydotfiles && \
         cd ~/Documents/repos/mydotfiles && \
         {
             git add .
