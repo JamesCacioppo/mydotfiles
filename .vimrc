@@ -1,4 +1,5 @@
-" Vim settings section
+"===========================Vim settings section==============================
+
 set nocompatible "set by default. Compatible will disable features to make compatible with vi.
 set nowrap "obvi
 set wildmenu "enable that auto complete menu at bottom of screen
@@ -41,7 +42,8 @@ map <C-n> :NERDTreeToggle<CR>
 "Auto close if NERDTree is last pane open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Pluggin section for vim-plug
+
+"======================Pluggin section for vim-plug===========================
 
 call plug#begin('~/.vim/plugged')
 
@@ -56,6 +58,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-master branch
@@ -74,6 +77,8 @@ Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 call plug#end()
 
+
+"==============================Vundle Section==================================
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -120,9 +125,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
+"==============================Configure ripgrep==============================
 
-
-"Configure ripgrep
 "" --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
@@ -144,4 +148,3 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
 
-" but this is what I got from Vinod...
