@@ -1,7 +1,7 @@
 alias ll="ls -la"
 alias gs="git status"
 alias gssh=_gcloud_ssh #alias to Vinod's gssh function
-#The following aliases depend on fzf.  `brew install fzf`
+# The following aliases depend on fzf.  `brew install fzf`
 alias preview="fzf --preview 'cat {}'"
 alias preview100="fzf --preview 'head -100 {}'"
 alias p="find . -type f | fzf --preview 'head -100 {}'"
@@ -19,11 +19,12 @@ function dbash() {
 ######################
 # Goolge Cloud stuff #
 ######################
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '~/Downloads/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/Users/jamescacioppo/google-cloud-sdk/path.bash.inc' ]; then . '/Users/jamescacioppo/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '~/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '~/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/Users/jamescacioppo/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/jamescacioppo/google-cloud-sdk/completion.bash.inc'; fi
 
 # gssh function from Vinod
 function _gcloud_ssh() {
@@ -52,15 +53,15 @@ function auth_gcloud() {
 ##############################
 # My quircky little functions #
 ##############################
-#copy file to new ansible-bootstrap repo
+# copy file to new ansible-bootstrap repo
 function cabs() {
 	cp -vR ~/Documents/repos/ansible/roles/$1 ~/Documents/repos/ansible-bootstrap/roles
 }
-#cd to a repo
+# cd to a repo
 function repo() {
 	cd ~/Documents/repos/$1
 }
-#cp all dotfiles to repo, commit, and push
+# cp all dotfiles to repo, commit, and push
 function dot() {
     if [ -z "$1" ]
     then
@@ -93,6 +94,8 @@ export PROMPT_COMMAND="history -a"
 shopt -s histappend
 shopt -s cmdhist
 # git fanciness
+# Below are paths for if git install with Homebrew
+# Below are paths for if git installed with Xcode
 source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
 source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
@@ -107,3 +110,4 @@ export PS1="\u@\h:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+

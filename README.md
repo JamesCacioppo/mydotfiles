@@ -11,30 +11,32 @@ and plugins to supercharge your VIM experience.
 
 ## Quick Start
 
-1. Install Vim-Plug
+1. Install Xcode from App Store.  Xcode will come with git and bash-completion. Start this first since it takes for ever.
+
+2. Install Vim-Plug
 
     ` curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 
-2. Install Vundle
+3. Install Vundle
 
     ` git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-3. Install fzf
+4. Install fzf
 
     ` brew install fzf`
 
-4. Install ripgrep
+5. Install ripgrep
 
     ` brew install ripgrep`
 
-5. Clone this repo and copy dot files into place
+6. Clone this repo and copy dot files into place
 
     ```
     git clone https://github.com/JamesCacioppo/mydotfiles.git
     cp .* ~/
     ```
 
-6. Run vim and install the plugins
+7. Run vim and install the plugins
 
     ```
     :PlugInstall
