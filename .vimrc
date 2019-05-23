@@ -7,9 +7,9 @@ set wildmode=list:longest "something to do with the wildmenu
 set visualbell "flash screen instead of audible bell
 set scrolloff=3 "keep cursor from bottom or top 5 lines when scrolling if possible. set so=0 to restore
 "TAB settings. These need to be turned off for Makefile
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab "expand tab just makes vim execute the above. Use :retab to fix existing tabs.
 
 set showmode "show command vs insert always
