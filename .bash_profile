@@ -82,7 +82,7 @@ function dot() {
     fi
 }
 
-function dottmux() {
+function tmuxdot() {
     if [ -z "$1" ]
     then
         echo Please provide a commit message in quotes and re-run
@@ -111,21 +111,22 @@ export HISTIGNORE="ls:ps:history"
 export PROMPT_COMMAND="history -a"
 shopt -s histappend
 shopt -s cmdhist
-# git fanciness
-# Below are paths for if git install with Homebrew
-# Below are paths for if git installed with Xcode
+
+# git fanciness: Supercharge your prompt!
+# Below are paths for if git installed with Xcode. If you installed with
+# Homebrew then you'll need to update these.
 source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
 source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 YELLOW="\[$(tput setaf 5)\]" #colors range from 0-6
 RESET="\[$(tput sgr0)\]"
 export PS1="\u@\h:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
+
 # set up ripgrep for bash and vim
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 

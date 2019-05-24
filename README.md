@@ -7,7 +7,8 @@
 
 These are my dot files.  My bash profile includes some aliases and functions for
 making basic opperations simpler.  The .vimrc file includes a bunch of settings
-and plugins to supercharge your VIM experience. 
+and plugins to supercharge your VIM experience, of which some of the best are
+NERDtree, Ripgrep, and Fuzzy Finder.
 
 ## Quick Start
 
