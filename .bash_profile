@@ -71,8 +71,26 @@ function dot() {
         cd ~/
         cp -v .bash_profile ~/Documents/repos/mydotfiles && \
         cp -v .vimrc ~/Documents/repos/mydotfiles && \
-        cp -v .tmux.conf ~/Documents/repos/mydotfiles && \
         cd ~/Documents/repos/mydotfiles && \
+        {
+            git add .
+            git commit -m "$1"
+            git push
+        } 
+        cd $start_dir
+        unset start_dir
+    fi
+}
+
+function dottmux() {
+    if [ -z "$1" ]
+    then
+        echo Please provide a commit message in quotes and re-run
+    else
+        start_dir=$(pwd) 
+        cd ~/
+        cp -v .tmux.local ~/Documents/repos/.tmux
+        cd ~/Documents/repos/.tmux
         {
             git add .
             git commit -m "$1"
