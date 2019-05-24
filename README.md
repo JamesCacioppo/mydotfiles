@@ -33,10 +33,10 @@ and plugins to supercharge your VIM experience.
 
     ` brew install tmux`    
 
-7. Clone this repo which contains the Tmux Plugin Manager
+7. Clone this repo which is just about the best stable config of tmux ever...
 
     ```
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    git clone https://github.com/gpakosz/.tmux.git
     ```
 
 8. Clone this repo and copy dot files into place
