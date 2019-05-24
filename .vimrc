@@ -166,3 +166,8 @@ nmap <C-k> <C-u>
 nmap <C-h> ^
 "map ctrl-l to $ for end of line
 nmap <C-l> $
+"map ctrl-c to esc since ctrl-c really has no need anymore. :help map-modes
+"for more info on modes. This is done so that you can use <C-c> like esc in
+"visual block insert actions.
+nmap <C-c> <Esc>
+imap <C-c> <Esc>
