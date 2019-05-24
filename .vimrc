@@ -6,7 +6,7 @@ set wildmenu "enable that auto complete menu at bottom of screen
 set wildmode=list:longest "something to do with the wildmenu
 set visualbell "flash screen instead of audible bell
 set scrolloff=3 "keep cursor from bottom or top 5 lines when scrolling if possible. set so=0 to restore
-"TAB settings. These need to be turned off for Makefile
+" TAB settings. These need to be turned off for Makefile
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -26,23 +26,24 @@ set lazyredraw "helps with scrolling large files but may have delay issues when 
 set colorcolumn=80 "puts a vertical line out at 80 char for style guide
 highlight ColorColumn ctermbg=235 guibg=#2c2d27 "sets the color of vertical guide
 
-"Searching options
-set ignorecase "kinda obvi, no?
-set incsearch "search as char are entered
-set hlsearch "highlight all terms
+" Searching options
+set ignorecase " kinda obvi, no?
+set incsearch " search as char are entered
+set hlsearch " highlight all terms
 
-"NERDTree hacks
+" NERDTree hacks
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeWinSize=50
 let NERDTreeShowHidden=1
 
-"Open and close NERDTree with ctrl+n
+" Open and close NERDTree with ctrl+n
 map <C-n> :NERDTreeToggle<CR>
-"Auto close if NERDTree is last pane open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"Auto open if no file arguments provided at cli
+" Auto close if NERDTree is last pane open -- I commented this out because it
+" was pissing me off...
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Auto open if no file arguments provided at cli
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
@@ -98,7 +99,7 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive' "git commands like :Gdiff and :Gstatus
+Plugin 'tpope/vim-fugitive' " git commands like :Gdiff and :Gstatus
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
