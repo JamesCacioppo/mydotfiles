@@ -29,14 +29,24 @@ and plugins to supercharge your VIM experience.
 
     ` brew install ripgrep`
 
-6. Clone this repo and copy dot files into place
+6. Install tmux
+
+    ` brew install tmux`    
+
+7. Clone this repo which contains the Tmux Plugin Manager
+
+    ```
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    ```
+
+8. Clone this repo and copy dot files into place
 
     ```
     git clone https://github.com/JamesCacioppo/mydotfiles.git
     cp .* ~/
     ```
 
-7. Run vim and install the plugins
+9. Run vim and install the plugins
 
     ```
     :PlugInstall
