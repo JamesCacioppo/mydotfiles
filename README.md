@@ -37,13 +37,14 @@ and plugins to supercharge your VIM experience.
 
     ```
     git clone https://github.com/gpakosz/.tmux.git
+    cd .tmux && cp .tmux* ~/
     ```
 
 8. Clone this repo and copy dot files into place
 
     ```
     git clone https://github.com/JamesCacioppo/mydotfiles.git
-    cp .* ~/
+    cd mydotfiles && cp .* ~/
     ```
 
 9. Run vim and install the plugins
