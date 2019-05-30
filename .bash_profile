@@ -7,6 +7,8 @@ alias preview100="fzf --preview 'head -100 {}'"
 alias p="find . -type f | fzf --preview 'head -100 {}'"
 alias vf="fzf --bind 'crtl-v:execute(vim {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 alias vimf="vim \$(fzf)"
+alias appsanywhere="sudo spctl --master-disable" # Pref> Sec&Priv > Allow apps from anywhere
+alias appsnowhere="sudo spctl --master-enable"
 
 ################
 # Docker stuff #
