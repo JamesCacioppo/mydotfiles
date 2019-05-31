@@ -39,10 +39,12 @@ NERDtree, Ripgrep, and Fuzzy Finder.
     ```
     - One option is to get this from gpakosz directly 
     git clone https://github.com/gpakosz/.tmux.git
-    
+    ```
+    ``` 
     - Another option is to get a copy from my fork so you have my key bindings
     git clone https://github.com/JamesCacioppo/.tmux.git
-
+    ```
+    ```
     - Then copy the files into place
     cd .tmux && cp .tmux* ~/
     ```
