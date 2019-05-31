@@ -37,17 +37,11 @@ NERDtree, Ripgrep, and Fuzzy Finder.
 7. Clone this repo which is just about the best stable config of tmux ever...
 
     - One option is to get this from gpakosz directly 
-    ```
-    git clone https://github.com/gpakosz/.tmux.git
-    ```
+    ` git clone https://github.com/gpakosz/.tmux.git`
     - Another option is to get a copy from my fork so you have my key bindings
-    ``` 
-    git clone https://github.com/JamesCacioppo/.tmux.git
-    ```
+    ` git clone https://github.com/JamesCacioppo/.tmux.git`
     - Then copy the files into place
-    ```
-    cd .tmux && cp .tmux* ~/
-    ```
+    ` cd .tmux && cp .tmux* ~/`
 
 8. Clone this repo and copy dot files into place
 
