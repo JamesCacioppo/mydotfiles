@@ -37,7 +37,13 @@ NERDtree, Ripgrep, and Fuzzy Finder.
 7. Clone this repo which is just about the best stable config of tmux ever...
 
     ```
+    - One option is to get this from gpakosz directly 
     git clone https://github.com/gpakosz/.tmux.git
+    
+    - Another option is to get a copy from my fork so you have my key bindings
+    git clone https://github.com/JamesCacioppo/.tmux.git
+
+    - Then copy the files into place
     cd .tmux && cp .tmux* ~/
     ```
 
@@ -45,7 +51,7 @@ NERDtree, Ripgrep, and Fuzzy Finder.
 
     ```
     git clone https://github.com/JamesCacioppo/mydotfiles.git
-    cd mydotfiles && cp .* ~/
+    cd mydotfiles && export GLOBIGNORE=.git && cp .* ~/
     ```
 
 9. Run vim and install the plugins
