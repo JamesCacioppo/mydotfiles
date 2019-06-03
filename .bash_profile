@@ -9,6 +9,8 @@ alias vf="fzf --bind 'crtl-v:execute(vim {}),ctrl-y:execute-silent(echo {} | pbc
 alias vimf="vim \$(fzf)"
 alias appsanywhere="sudo spctl --master-disable" # Pref> Sec&Priv > Allow apps from anywhere
 alias appsnowhere="sudo spctl --master-enable"
+alias socat='socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"'
+alias chrome="docker run -e DISPLAY=192.168.225.32:0 --privileged jess/chrome"
 
 ################
 # Docker stuff #
@@ -102,6 +104,17 @@ function tmuxdot() {
         unset start_dir
     fi
 }
+
+function gitemail() {
+  if [ -z "$1" ]
+  then
+    echo Please provide an email address
+  else
+    git config user.email "$1"
+    git config user.email
+  fi
+}
+
 ##################
 # Computer hacks #
 ##################
