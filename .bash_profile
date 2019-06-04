@@ -93,7 +93,7 @@ function tmuxdot() {
     else
         start_dir=$(pwd) 
         cd ~/
-        cp -v .tmux.local ~/Documents/repos/.tmux
+        cp -v .tmux.conf.local ~/Documents/repos/.tmux
         cd ~/Documents/repos/.tmux
         {
             git add .

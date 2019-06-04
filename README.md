@@ -40,7 +40,7 @@ NERDtree, Ripgrep, and Fuzzy Finder.
 
     ` git clone https://github.com/gpakosz/.tmux.git`
 
-    - Another option is to get a copy from my fork so you have my key bindings
+    - Another option is to get a copy from my fork so you have my key bindings. If you go this route you should get iterm2 and set opt keys to Esc+ in Preferences->Profiles->Keys.
 
     ` git clone https://github.com/JamesCacioppo/.tmux.git`
 
