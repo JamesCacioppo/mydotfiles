@@ -135,7 +135,10 @@ source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.
 GIT_PS1_SHOWDIRTYSTATE=true
 YELLOW="\[$(tput setaf 5)\]" #colors range from 0-6
 RESET="\[$(tput sgr0)\]"
-export PS1="\u@\h:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
+#export PS1="\u@\h:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
+export PS1="\u@MyMBP:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
+# Change PS1 because someone used a default JAMF profile and my hostname is my
+# serial number: dumb dumb dumb dumb dumb
 
 # set up ripgrep for bash and vim
 # --files: List files that would be searched but do not search
