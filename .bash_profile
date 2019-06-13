@@ -11,6 +11,7 @@ alias appsanywhere="sudo spctl --master-disable" # Pref> Sec&Priv > Allow apps 
 alias appsnowhere="sudo spctl --master-enable"
 alias socat='socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"'
 alias chrome="docker run -e DISPLAY=192.168.225.32:0 --privileged jess/chrome"
+alias dbs="bootstrap=`docker ps | grep bootstrap | awk '{print $1}'`"
 
 ################
 # Docker stuff #
@@ -126,6 +127,13 @@ export HISTIGNORE="ls:ps:history"
 export PROMPT_COMMAND="history -a"
 shopt -s histappend
 shopt -s cmdhist
+
+# make sure print screen files go to Pictures
+screencaploc=/Users/`whoami`/Pictures #where we want screen caps to go
+if [ $screencaploc != $(defaults read com.apple.screencapture location) ]
+then
+  defaults write com.apple.screencapture location $screencaploc
+fi
 
 # git fanciness: Supercharge your prompt!
 # Below are paths for if git installed with Xcode. If you installed with
