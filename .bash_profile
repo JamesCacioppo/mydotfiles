@@ -11,7 +11,7 @@ alias appsanywhere="sudo spctl --master-disable" # Pref> Sec&Priv > Allow apps 
 alias appsnowhere="sudo spctl --master-enable"
 alias socat='socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"'
 alias chrome="docker run -e DISPLAY=192.168.225.32:0 --privileged jess/chrome"
-alias dbs="bootstrap=`docker ps | grep bootstrap | awk '{print $1}'`"
+alias dbs="bootstrap=`docker ps | grep bootstrap | awk '{print $1}'`; echo bootstrap = $bootstrap"
 
 ################
 # Docker stuff #
