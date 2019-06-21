@@ -5,10 +5,11 @@
 
 ## About
 
-These are my dot files.  My bash profile includes some aliases and functions for
-making basic opperations simpler.  The .vimrc file includes a bunch of settings
-and plugins to supercharge your VIM experience, of which some of the best are
-NERDtree, Ripgrep, and Fuzzy Finder.
+These are my dot files.  They're meant to be deployed on a Mac but with a small
+ammount of modification they should work on Linux as well.  My bash profile
+includes some aliases and functions for making basic opperations simpler.  The
+.vimrc file includes a bunch of settings and plugins to supercharge your VIM
+experience, of which some of the best are NERDtree, Ripgrep, and Fuzzy Finder.
 
 ## Quick Start
 
