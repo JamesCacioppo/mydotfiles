@@ -12,6 +12,7 @@ alias appsnowhere="sudo spctl --master-enable"
 alias socat='socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"'
 alias chrome="docker run -e DISPLAY=192.168.225.32:0 --privileged jess/chrome"
 alias dbs="bootstrap=`docker ps | grep bootstrap | awk '{print $1}'`; echo bootstrap = $bootstrap"
+alias run_jenkins="cd ~/;docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts"
 
 ################
 # Docker stuff #
