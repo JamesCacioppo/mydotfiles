@@ -59,8 +59,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Had to comment out ultisnips because it's a python snippet tool and
+" something wonky happened when I installed aws cli using pip3
+"
 " On-demand loading
 "Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }

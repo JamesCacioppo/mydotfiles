@@ -1,8 +1,10 @@
+export PATH=~/Library/Python/3.7/bin:$PATH
 alias ll="ls -la"
 alias gs="git status"
 alias gssh=_gcloud_ssh #alias to Vinod's gssh function
 # The following aliases depend on fzf.  `brew install fzf`
 alias preview="fzf --preview 'cat {}'"
+alias previewbinary="fzf --preview 'strings {}'"
 alias preview100="fzf --preview 'head -100 {}'"
 alias p="find . -type f | fzf --preview 'head -100 {}'"
 alias vf="fzf --bind 'crtl-v:execute(vim {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
