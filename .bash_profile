@@ -46,10 +46,21 @@ function _gcloud_ssh() {
 
 # Functions to change gcloud environments
 function switch_to_devstaging() {
-    gcloud container clusters get-credentials devstagingcluster1  --zone us-east4-a  --project gs-dev-staging
     gcloud config set project gs-dev-staging
     gcloud config set compute/zone us-east4-a
     gcloud config set compute/region us-east4
+}
+
+function switch_to_gscustomer() {
+		kubectl config use-context gke_gs-customer_us-east1_production-customer-01
+		gcloud config set project gs-customer
+		gcloud config set compute/zone us-east1-b
+		gcloud config set compute/region us-east1
+}
+
+function get_cluster_creds() {
+		gcloud container clusters get-credentials devstagingcluster1  --zone us-east4-a  --project gs-dev-staging
+		gcloud container clusters get-credentials production-customer-01  --region us-east1  --project gs-customer
 }
 
 # Function to auth gcloud
