@@ -1,7 +1,6 @@
 export PATH=~/Library/Python/3.7/bin:$PATH
 alias ll="ls -la"
 alias gs="git status"
-alias gssh=_gcloud_ssh #alias to Vinod's gssh function
 # The following aliases depend on fzf.  `brew install fzf`
 alias preview="fzf --preview 'cat {}'"
 alias previewbinary="fzf --preview 'strings {}'"
@@ -36,13 +35,37 @@ if [ -f '/Users/jamescacioppo/google-cloud-sdk/completion.bash.inc' ]; then . '/
 
 # gssh function from Vinod
 function _gcloud_ssh() {
-    local instance=$(gcloud compute instances list | fzf --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
+    local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
     if [[ -n $instance ]]; then
         echo "gcloud compute ssh $instance --internal-ip"
         eval "gcloud compute ssh $instance --internal-ip"
         return $?
     fi
 }
+
+alias gssh=_gcloud_ssh #alias to Vinod's gssh function
+
+function _gcloud_stop() {
+    local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
+    if [[ -n $instance ]]; then
+        echo "gcloud compute instances stop $instance"
+        eval "gcloud compute instances stop $instance"
+        return $?
+    fi
+}
+
+alias gstop=_gcloud_stop
+
+function _gcloud_start() {
+    local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
+    if [[ -n $instance ]]; then
+        echo "gcloud compute instances start $instance"
+        eval "gcloud compute instances start $instance"
+        return $?
+    fi
+}
+
+alias gstart=_gcloud_start
 
 # Functions to change gcloud environments
 function switch_to_devstaging() {
