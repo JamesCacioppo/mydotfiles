@@ -74,6 +74,12 @@ function switch_to_devstaging() {
     gcloud config set compute/region us-east4
 }
 
+function switch_to_sitebuilder() {
+    gcloud config set project gs-site-builder
+    gcloud config set compute/zone us-east1-c
+    gcloud config set compute/region us-east1
+}
+
 function switch_to_gscustomer() {
 		kubectl config use-context gke_gs-customer_us-east1_production-customer-01
 		gcloud config set project gs-customer
