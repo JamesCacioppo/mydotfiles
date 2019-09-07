@@ -95,7 +95,8 @@ function get_cluster_creds() {
 # Function to auth gcloud
 function auth_gcloud() {
     gcloud auth login
-    gcloud auth configure-docker # auth docker to use gcr
+    gcloud auth configure-docker # auth docker to use gcri
+    gcloud auth application-default login
 }
 
 ##############################
