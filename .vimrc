@@ -47,6 +47,12 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" vim-terraform config
+let g:terraform_align=1
+"let g:terraform_fold_sections=1 "need to figure out why I can't re-fold after
+"unfold
+let g:terraform_fmt_on_save=1
+
 "======================Pluggin section for vim-plug===========================
 
 call plug#begin('~/.vim/plugged')
@@ -118,6 +124,9 @@ Plugin 'git://git.wincent.com/command-t.git'
 " nerdtree git plugin to show flags
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
+" terraform support from hashivim
+Plugin 'hashivim/vim-terraform'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -132,8 +141,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-
 "==============================Configure ripgrep==============================
 
 "" --column: Show column number
