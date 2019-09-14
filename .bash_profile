@@ -92,6 +92,12 @@ function get_cluster_creds() {
 		gcloud container clusters get-credentials production-customer-01  --region us-east1  --project gs-customer
 }
 
+function switch_to_gsinfra() {
+    gcloud config set project gs-infra
+    gcloud config set compute/zone us-east4-a
+    gcloud config set compute/region us-east4
+}
+
 # Function to auth gcloud
 function auth_gcloud() {
     gcloud auth login
