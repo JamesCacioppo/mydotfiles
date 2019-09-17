@@ -11,7 +11,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab "expand tab just makes vim execute the above. Use :retab to fix existing tabs.
-#set list and set nolist to show special chars like tabs
+"set list and set nolist to show special chars like tabs
 
 set showmode "show command vs insert always
 set showcmd "show last command as you are typing
