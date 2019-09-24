@@ -1,5 +1,4 @@
-export PATH=~/Library/Python/3.7/bin:$PATH
-alias ll="ls -la"
+export PATH=~/Library/Python/3.7/bin:$PATH alias ll="ls -la"
 alias gs="git status"
 # The following aliases depend on fzf.  `brew install fzf`
 alias preview="fzf --preview 'cat {}'"
@@ -126,6 +125,7 @@ function dot() {
         cd ~/
         cp -v .bash_profile ~/Documents/repos/mydotfiles && \
         cp -v .vimrc ~/Documents/repos/mydotfiles && \
+        cp -v .gitconfig ~/Documents/repos/mydotfiles && \
         cd ~/Documents/repos/mydotfiles && \
         {
             git add .
