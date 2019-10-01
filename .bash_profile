@@ -207,3 +207,5 @@ export PS1="\u@MyMBP:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+# set up fubectl
+[ -f ~/.vim/fubectl.source ] && source ~/.vim/fubectl.source
