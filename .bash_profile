@@ -94,8 +94,8 @@ function get_cluster_creds() {
 
 function switch_to_gsinfra() {
     gcloud config set project gs-infra
-    gcloud config set compute/zone us-east4-a
     gcloud config set compute/region us-east4
+    gcloud config set compute/zone us-east4-a
 }
 
 # Function to auth gcloud
