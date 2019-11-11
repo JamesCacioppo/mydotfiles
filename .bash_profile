@@ -72,6 +72,13 @@ function _gcloud_start() {
 
 alias gstart=_gcloud_start
 
+# Show current gcloud config
+function gcloud_config_get() {
+    gcloud config get-value project
+    gcloud config get-value compute/region
+    gcloud config get-value compute/zone
+}
+
 # Functions to change gcloud environments
 function switch_to_demo() {
     gcloud config set project gs-gems-demo
