@@ -162,13 +162,13 @@ function gitemail() {
 # Computer hacks #
 ##################
 # Bash History
-export HISTTIMEFORMAT="%h %d %H:%M:%S "
-export HISTSIZE=10000
-export HISTFILESIZE=10000
-export HISTIGNORE="ls:ps:history"
-export PROMPT_COMMAND="history -a"
-shopt -s histappend
-shopt -s cmdhist
+#export HISTTIMEFORMAT="%h %d %H:%M:%S "
+#export HISTSIZE=10000
+#export HISTFILESIZE=10000
+#export HISTIGNORE="ls:ps:history"
+#export PROMPT_COMMAND="history -a"
+#shopt -s histappend
+#shopt -s cmdhist
 
 # make sure print screen files go to Pictures
 screencaploc=/Users/`whoami`/Pictures #where we want screen caps to go
@@ -180,7 +180,7 @@ fi
 # git fanciness: Supercharge your prompt!
 # Below are paths for if git installed with Xcode. If you installed with
 # Homebrew then you'll need to update these.
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.bash
+source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.zsh
 source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 YELLOW="\[$(tput setaf 5)\]" #colors range from 0-6
