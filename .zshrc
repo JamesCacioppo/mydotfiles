@@ -128,27 +128,6 @@ function cabs() {
 function repo() {
 	cd ~/Documents/repos/$1
 }
-# cp all dotfiles to repo, commit, and push
-function dot() {
-    if [ -z "$1" ]
-    then
-        echo Please provide a commit message in quotes and re-run
-    else
-        start_dir=$(pwd) 
-        cd ~/
-        cp -v .bash_profile ~/Documents/repos/mydotfiles && \
-        cp -v .vimrc ~/Documents/repos/mydotfiles && \
-        cp -v .gitconfig ~/Documents/repos/mydotfiles && \
-        cd ~/Documents/repos/mydotfiles && \
-        {
-            git add .
-            git commit -m "$1"
-            git push
-        } 
-        cd $start_dir
-        unset start_dir
-    fi
-}
 
 function tmuxdot() {
     if [ -z "$1" ]
