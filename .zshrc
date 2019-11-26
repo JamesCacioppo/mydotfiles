@@ -122,6 +122,12 @@ function dbash() {
 # Goolge Cloud stuff #
 ######################
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jamescacioppo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jamescacioppo/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jamescacioppo/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jamescacioppo/google-cloud-sdk/completion.zsh.inc'; fi
+
 # gssh function from Vinod
 function _gcloud_ssh() {
     local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
