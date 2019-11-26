@@ -1,4 +1,4 @@
-export PATH=~/Library/Python/3.7/bin:$PATH
+export PATH=~/Documents/repos/tools:~/Library/Python/3.7/bin:$PATH
 alias ll="ls -al"
 alias gs="git status"
 # The following aliases depend on fzf.  `brew install fzf`

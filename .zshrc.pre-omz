@@ -1,4 +1,4 @@
-export PATH=~/Library/Python/3.7/bin:$PATH
+export PATH=~/Documents/repos/tools:~/Library/Python/3.7/bin:$PATH
 alias ll="ls -al"
 alias gs="git status"
 # The following aliases depend on fzf.  `brew install fzf`
@@ -161,34 +161,12 @@ function gitemail() {
 ##################
 # Computer hacks #
 ##################
-# Bash History
-#export HISTTIMEFORMAT="%h %d %H:%M:%S "
-#export HISTSIZE=10000
-#export HISTFILESIZE=10000
-#export HISTIGNORE="ls:ps:history"
-#export PROMPT_COMMAND="history -a"
-#shopt -s histappend
-#shopt -s cmdhist
-
 # make sure print screen files go to Pictures
 screencaploc=/Users/`whoami`/Pictures #where we want screen caps to go
 if [ $screencaploc != $(defaults read com.apple.screencapture location) ]
 then
   defaults write com.apple.screencapture location $screencaploc
 fi
-
-# git fanciness: Supercharge your prompt!
-# Below are paths for if git installed with Xcode. If you installed with
-# Homebrew then you'll need to update these.
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-completion.zsh
-source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=true
-YELLOW="\[$(tput setaf 5)\]" #colors range from 0-6
-RESET="\[$(tput sgr0)\]"
-#export PS1="\u@\h:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
-export PS1="\u@MyMBP:\W \$(__git_ps1 \" ${YELLOW}(%s)${RESET} \")\$ "
-# Change PS1 because someone used a default JAMF profile and my hostname is my
-# serial number: dumb dumb dumb dumb dumb
 
 # set up ripgrep for bash and vim
 # --files: List files that would be searched but do not search
