@@ -37,4 +37,5 @@
     fa = fetch --all
     pom = push origin master
 [core]
-	excludesfile = /Users/jamescacioppo/.gitignore_global
+  excludesfile = /Users/jamescacioppo/.gitignore_global
+  pager = less -FRX
