@@ -16,7 +16,7 @@
                 },
                 "rules": [
                   {
-                  	"description": "Ctrl + space becomes backspace",
+                  	"description": "Ctrl + space becomes enter",
                     "manipulators": [
                       {
                         "from": {
@@ -24,6 +24,27 @@
                           "modifiers": {
                             "mandatory": [
                               "left_control"
+                            ]
+                          }
+                        },
+                        "to": [
+                          {
+                            "key_code": "return_or_enter"
+                          }
+                        ],
+                        "type": "basic"
+                    } 
+                	]
+								},
+                {
+                  	"description": "shift + space becomes delete",
+                    "manipulators": [
+                      {
+                        "from": {
+                          "key_code": "spacebar",
+                          "modifiers": {
+                            "mandatory": [
+                              "left_shift"
                             ]
                           }
                         },
