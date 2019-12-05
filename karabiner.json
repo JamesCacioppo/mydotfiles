@@ -16,7 +16,7 @@
                 },
                 "rules": [
                   {
-                  	"description": "Ctrl + space becomes enter",
+                  	"description": "Ctrl + space becomes backspace",
                     "manipulators": [
                       {
                         "from": {
@@ -29,7 +29,7 @@
                         },
                         "to": [
                           {
-                            "key_code": "return_or_enter"
+                            "key_code": "delete_or_backspace"
                           }
                         ],
                         "type": "basic"
