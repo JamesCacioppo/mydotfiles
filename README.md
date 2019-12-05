@@ -51,6 +51,14 @@ experience, of which some of the best are NERDtree, Ripgrep, and Fuzzy Finder.
 
 8. Clone this repo and copy dot files into place
 
+    - You can symlink the dot files to the local repo for easier management (suggested)
+
+    ```
+    git clone https://github.com/JamesCacioppo/mydotfiles.git
+    cd ~/; ln -sv ~/Documents/repos/mydotfiles/.zshrc .
+    ```
+    - Alternatively you can copy the dot files into place
+
     ```
     git clone https://github.com/JamesCacioppo/mydotfiles.git
     cd mydotfiles && export GLOBIGNORE=.git && cp .* ~/
@@ -61,4 +69,12 @@ experience, of which some of the best are NERDtree, Ripgrep, and Fuzzy Finder.
     ```
     :PlugInstall
     :PluginInstall
+    ```
+
+10. Install Karabiner
+
+    - Visit https://pqrs.org/osx/karabiner/index.html to download and install Karabiner then copy the config into place.
+
+    ```
+    cd ~/.confg/karabiner/; ln -sv ~/Documents/repos/mydotfiles/karabiner.json .
     ```
