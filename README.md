@@ -15,27 +15,31 @@ experience, of which some of the best are NERDtree, Ripgrep, and Fuzzy Finder.
 
 1. Install Xcode from App Store.  Xcode will come with git and bash-completion. Start this first since it takes for ever.
 
-2. Install Vim-Plug
+2. Install oh-my-zsh
+
+    ` export ZSH="$HOME/.oh-my-zsh"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
+3. Install Vim-Plug
 
     ` curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 
-3. Install Vundle
+4. Install Vundle
 
     ` git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-4. Install fzf
+5. Install fzf
 
     ` brew install fzf`
 
-5. Install ripgrep
+6. Install ripgrep
 
     ` brew install ripgrep`
 
-6. Install tmux
+7. Install tmux
 
     ` brew install tmux`    
 
-7. Clone this repo which is just about the best stable config of tmux ever...
+8. Clone this repo which is just about the best stable config of tmux ever...
 
     - One option is to get this from gpakosz directly 
 
@@ -49,7 +53,7 @@ experience, of which some of the best are NERDtree, Ripgrep, and Fuzzy Finder.
 
     ` cd .tmux && cp .tmux* ~/`
 
-8. Clone this repo and copy dot files into place
+9. Clone this repo and copy dot files into place
 
     - You can symlink the dot files to the local repo for easier management (suggested)
 
@@ -64,14 +68,14 @@ experience, of which some of the best are NERDtree, Ripgrep, and Fuzzy Finder.
     cd mydotfiles && export GLOBIGNORE=.git && cp .* ~/
     ```
 
-9. Run vim and install the plugins
+10. Run vim and install the plugins
 
     ```
     :PlugInstall
     :PluginInstall
     ```
 
-10. Install Karabiner
+11. Install Karabiner
 
     - Visit https://pqrs.org/osx/karabiner/index.html to download and install Karabiner then copy the config into place.
 
