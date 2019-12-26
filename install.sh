@@ -19,14 +19,15 @@
 ** Install oh-my-zsh
 '
 
-_iterm() {
-  curl -L https://iterm2.com/downloads/stable/latest --output /tmp/iterm.zip
-  unzip /tmp/iterm.zip
-  mv /tmp/iterm.app /Applications/
-}
-
 _brew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+_iterm() {
+#  curl -L https://iterm2.com/downloads/stable/latest --output /tmp/iterm.zip
+#  unzip /tmp/iterm.zip
+#  mv /tmp/iterm.app /Applications/
+  brew cask install iterm2
 }
 
 _git() {
