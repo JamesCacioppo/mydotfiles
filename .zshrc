@@ -93,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=~/Documents/repos/tools:~/Library/Python/3.7/bin:$PATH
 alias ll="ls -al"
 alias gs="git status"
+alias gl="git log --oneline --graph --decorate"
 # The following aliases depend on fzf.  `brew install fzf`
 alias preview="fzf --preview 'cat {}'"
 alias previewbinary="fzf --preview 'strings {}'"
@@ -109,6 +110,7 @@ alias run_jenkins="cd ~/;docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:
 alias eval-ssh-agent='eval "$(ssh-agent -s)"'
 alias speed-test-curl='curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias speed-test-wget='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
+alias git-email='git config user.email'
 
 ################
 # Docker stuff #
@@ -238,16 +240,6 @@ function tmuxdot() {
         cd $start_dir
         unset start_dir
     fi
-}
-
-function gitemail() {
-  if [ -z "$1" ]
-  then
-    echo Please provide an email address
-  else
-    git config user.email "$1"
-    git config user.email
-  fi
 }
 
 ##################
