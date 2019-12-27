@@ -9,7 +9,7 @@
 * install Docker
 * brew install Terraform
 * brew install cmatrix
-* brew install derailed/k8s/k8s
+* brew install derailed/k9s/k9s
 * brew install kubectl
 * brew install txn2/tap/kubefwd
 * brew tap moncho/dry; brew install dry
@@ -40,4 +40,38 @@ _gcloud_sdk() {
 
 _awscli() {
   brew install awscli
+}
+
+_docker() {
+  #Does this install everything needed like downloading and installing from web?
+  brew install docker
+}
+
+_terraform() {
+  brew install terraform
+}
+
+_cmatrix() {
+  brew install cmatrix
+}
+
+_derailed() {
+  brew install derailed/k9s/k9s
+}
+
+_kubctl() {
+  brew install kubectl
+}
+
+_kubefwd() {
+  brew install txn2/tap/kubefwd
+}
+
+_dry() {
+  brew tap moncho/dry; brew install dry
+}
+
+_minicom() {
+  #minicom is a utility for opening a tty console to Cisco using usb console port
+  brew install minicom
 }
