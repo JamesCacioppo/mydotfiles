@@ -1,23 +1,21 @@
 #!/bin/bash
 
 : '
-* install iTerm2
-* install Homebrew
-# install git
-* install gcloud SDK
-* install AWS cli
-* install Docker
-* brew install Terraform
-* brew install cmatrix
-* brew install derailed/k9s/k9s
-* brew install kubectl
-* brew install txn2/tap/kubefwd
-* brew tap moncho/dry; brew install dry
-* brew install minicom
-* Check that zsh is default
-** chsh -s /bin/zsh
-** Install oh-my-zsh
+Prepare the base system by installing the necessary packages first.  Then
+install customizations like oh-my-zsh and Oh My Tmux!  Finally symlink all
+dotfiles to the repo.
 '
+
+_dir() {
+  if [ -d ~/Documents/repo ]
+  then
+    cd ~/Documents/repo
+  else
+    mkdir -p ~/Documents/repo
+    cd ~/Documents/repo
+  fi
+} #TODO: need to make sure we're running from ~/Documents/repo/mydotfiles or
+# we'll have problems with later functions
 
 _brew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -75,3 +73,48 @@ _minicom() {
   #minicom is a utility for opening a tty console to Cisco using usb console port
   brew install minicom
 }
+
+_zsh() {
+  #first check to make sure zsh is def shell and set it if not
+  if [[ $PATH != /bin/zsh ]]
+  then
+    chsh -s /bin/zsh 
+  fi
+  #install zsh
+  export ZSH="$HOME/.oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
+_vim-plug() {
+  curl -fLo ~/.vim/autoload/plug.vim \
+  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
+
+_vundle() {
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+}
+
+_fzf() {
+  brew install fzf
+}
+
+_ripgrep() {
+  brew install ripgrep
+}
+
+_tmux() {
+  echo Installing tmux
+  brew install tmux
+  echo Clonging Oh My Tmux!
+  cd ~/Documents/repo && git clone https://github.com/JamesCacioppo/.tmux.git
+  rm ~/.tmux.conf
+  echo Linking .tmux.conf
+  ln -sv ~/Documents/repo/.tmux/.tmux.conf ~/.tmux.conf
+}
+
+_dotfiles() {
+  echo Linking .zshrc
+  rm ~/.zshrc && ln -sv ~/Documents/repo/mydotfiles/.zshrc ~/.zshrc
+  echo Linking .bash_profile
+  rm ~/.bash_profile && ln -sv ~/Documents/repo/mydotfiles/.bash_profile ~/.bash_profile
+
