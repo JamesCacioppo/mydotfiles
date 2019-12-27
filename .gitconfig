@@ -30,6 +30,7 @@
     ff = merge --ff-only
     pullff = pull --ff-only
     l = log --graph --abbrev-commit --date=relative
+    lo = git log --oneline --graph --decorate
     la = !git l --all
     div = divergence
     gn = goodness
