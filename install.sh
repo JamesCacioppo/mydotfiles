@@ -6,6 +6,36 @@ install customizations like oh-my-zsh and Oh My Tmux!  Finally symlink all
 dotfiles to the repo.
 '
 
+main() {
+  _dir()
+  _brew()
+  _iterm()
+  _git()
+  _gcloud_sdk()
+  _awscli()
+  _docker()
+  _terraform()
+  _cmatrix()
+  _derailed()
+  _kubectl()
+  _kubefwd()
+  _dry()
+  _minicom()
+  _zsh()
+  _vim-plug()
+  _vundle()
+  _fzf()
+  _ripgrep()
+  _tmux()
+  _karabiner()
+  _dotfiles()
+
+  echo Install routine complete.  Please verify that all packages have been
+  echo successfully installed.
+  echo -e "\nThe next step is to start vim and execute the following two commands:"
+  echo -e ":PlugInstall\n:PluginInstall"
+}
+
 _dir() {
   if [ -d ~/Documents/repo ]
   then
@@ -112,9 +142,23 @@ _tmux() {
   ln -sv ~/Documents/repo/.tmux/.tmux.conf ~/.tmux.conf
 }
 
+_karabiner() {
+  echo Installing Karabiner Elements
+  brew cask install karabiner-elements
+}
+
 _dotfiles() {
   echo Linking .zshrc
-  rm ~/.zshrc && ln -sv ~/Documents/repo/mydotfiles/.zshrc ~/.zshrc
+  rm -f ~/.zshrc && ln -sv ~/Documents/repo/mydotfiles/.zshrc ~/.zshrc
   echo Linking .bash_profile
-  rm ~/.bash_profile && ln -sv ~/Documents/repo/mydotfiles/.bash_profile ~/.bash_profile
+  rm -f ~/.bash_profile && ln -sv ~/Documents/repo/mydotfiles/.bash_profile ~/.bash_profile
+  echo Linking .gitconfig
+  rm -f ~/.gitconfig && ln -sv ~/Documents/repo/mydotfiles/.gitconfig ~/.gitconfig
+  echo Linking .vimrc
+  rm -f ~/.vimrc && ln -sv ~/Documents/repo/mydotfiles/.vimrc ~/.vimrc
+  echo Linking karabiner.json
+  rm -f ~/.config/karabiner/karabiner.json && \
+    ln -sv ~/Documents/repo/mydotfiles/karabiner.json ~/.config/karabiner/karabiner.json
+}
 
+main
