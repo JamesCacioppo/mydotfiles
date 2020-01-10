@@ -29,6 +29,7 @@ main() {
   _tmux()
   _karabiner()
   _dotfiles()
+  _wireshark()
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -145,6 +146,11 @@ _tmux() {
 _karabiner() {
   echo Installing Karabiner Elements
   brew cask install karabiner-elements
+}
+
+_wireshark() {
+  echo Installing Wireshark
+  brew cask install wireshark
 }
 
 _dotfiles() {
