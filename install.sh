@@ -30,6 +30,7 @@ main() {
   _karabiner()
   _dotfiles()
   _wireshark()
+  _go()
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -151,6 +152,11 @@ _karabiner() {
 _wireshark() {
   echo Installing Wireshark
   brew cask install wireshark
+}
+
+_go() {
+  echo Installing go
+  brew install go
 }
 
 _dotfiles() {
