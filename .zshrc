@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH=~/Documents/repos/tools:~/Library/Python/3.7/bin:$PATH
+export PATH=~/go/bin:~/Documents/repos/tools:~/Library/Python/3.7/bin:$PATH
 alias ll="ls -al"
 alias gs="git status"
 alias gl="git log --oneline --graph --decorate"
@@ -111,6 +111,7 @@ alias eval-ssh-agent='eval "$(ssh-agent -s)"'
 alias speed-test-curl='curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias speed-test-wget='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias git-email='git config user.email'
+alias fix-xcode-cli='xcode-select --install'
 
 ################
 # Docker stuff #
