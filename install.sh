@@ -39,11 +39,11 @@ main() {
 }
 
 _dir() {
-  if [ -d ~/Documents/repo ]
+  if [ -d ~/Documents/repos ]
   then
-    cd ~/Documents/repo
+    cd ~/Documents/repos
   else
-    mkdir -p ~/Documents/repo
+    mkdir -p ~/Documents/repos
     cd ~/Documents/repo
   fi
 } #TODO: need to make sure we're running from ~/Documents/repo/mydotfiles or
@@ -157,6 +157,11 @@ _wireshark() {
 _go() {
   echo Installing go
   brew install go
+}
+
+_vagrant() {
+  echo Installing Vagrant
+  brew cask install vagrant
 }
 
 _dotfiles() {
