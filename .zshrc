@@ -247,7 +247,7 @@ function tmuxdot() {
 # Computer hacks #
 ##################
 # make sure print screen files go to Pictures
-screencaploc=/Users/`whoami`/Pictures #where we want screen caps to go
+screencaploc=$HOME/Pictures #where we want screen caps to go
 if [ $screencaploc != $(defaults read com.apple.screencapture location) ]
 then
   defaults write com.apple.screencapture location $screencaploc
