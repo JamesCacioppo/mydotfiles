@@ -31,6 +31,7 @@ main() {
   _dotfiles()
   _wireshark()
   _go()
+  _vscode()
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -176,6 +177,14 @@ _dotfiles() {
   echo Linking karabiner.json
   rm -f ~/.config/karabiner/karabiner.json && \
     ln -sv ~/Documents/repo/mydotfiles/karabiner.json ~/.config/karabiner/karabiner.json
+}
+
+_vscode() {
+  brew cask install visual-studio-code
+  # Must change this global setting to that pressing and holding hjkl actually
+  # allows scrolling
+  defaults write -g ApplePressAndHoldEnabled -bool false
+  #TODO Figure out how to include VSCODE settings
 }
 
 main
