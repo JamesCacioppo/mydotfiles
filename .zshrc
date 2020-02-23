@@ -248,7 +248,8 @@ function tmuxdot() {
 ##################
 # make sure print screen files go to Pictures
 screencaploc=$HOME/Pictures #where we want screen caps to go
-if [ $screencaploc != $(defaults read com.apple.screencapture location) ]
+defaults read com.apple.screencapture location &> /dev/null #just need to get exit code for next test
+if [ $? -ne 0 ] || [ $screencaploc != $(defaults read com.apple.screencapture location) ]
 then
   defaults write com.apple.screencapture location $screencaploc
 fi
