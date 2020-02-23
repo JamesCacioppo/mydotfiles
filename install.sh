@@ -139,8 +139,9 @@ _tmux() {
   echo Clonging Oh My Tmux!
   cd ~/Documents/repo && git clone https://github.com/JamesCacioppo/.tmux.git
   rm ~/.tmux.conf
-  echo Linking .tmux.conf
-  ln -sv ~/Documents/repo/.tmux/.tmux.conf ~/.tmux.conf
+  echo Linking .tmux.conf and .tmux.conf.local
+  ln -sv ~/Documents/repos/.tmux/.tmux.conf ~/.tmux.conf
+  ln -sv ~/Documents/repos/.tmux/.tmux.conf.local ~/.tmux.conf.local
 }
 
 _karabiner() {
