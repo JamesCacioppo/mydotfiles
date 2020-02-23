@@ -1,37 +1,35 @@
 #!/bin/bash
-
-: '
 Prepare the base system by installing the necessary packages first.  Then
 install customizations like oh-my-zsh and Oh My Tmux!  Finally symlink all
 dotfiles to the repo.
 '
 
 main() {
-  _dir()
-  _brew()
-  _iterm()
-  _git()
-  _gcloud_sdk()
-  _awscli()
-  _docker()
-  _terraform()
-  _cmatrix()
-  _derailed()
-  _kubectl()
-  _kubefwd()
-  _dry()
-  _minicom()
-  _zsh()
-  _vim-plug()
-  _vundle()
-  _fzf()
-  _ripgrep()
-  _tmux()
-  _karabiner()
-  _dotfiles()
-  _wireshark()
-  _go()
-  _vscode()
+  _dir
+  _brew
+  _iterm
+  _git
+  _gcloud_sdk
+  _awscli
+  _docker
+  _terraform
+  _cmatrix
+  _derailed
+  _kubectl
+  _kubefwd
+  _dry
+  _minicom
+  _zsh
+  _vim-plug
+  _vundle
+  _fzf
+  _ripgrep
+  _tmux
+  _karabiner
+  _dotfiles
+  _wireshark
+  _go
+  _vscode
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -45,7 +43,7 @@ _dir() {
     cd ~/Documents/repos
   else
     mkdir -p ~/Documents/repos
-    cd ~/Documents/repo
+    cd ~/Documents/repos
   fi
 } #TODO: need to make sure we're running from ~/Documents/repo/mydotfiles or
 # we'll have problems with later functions
@@ -167,16 +165,19 @@ _vagrant() {
 
 _dotfiles() {
   echo Linking .zshrc
-  rm -f ~/.zshrc && ln -sv ~/Documents/repo/mydotfiles/.zshrc ~/.zshrc
+  rm -f ~/.zshrc && ln -sv ~/Documents/repos/mydotfiles/.zshrc ~/.zshrc
   echo Linking .bash_profile
-  rm -f ~/.bash_profile && ln -sv ~/Documents/repo/mydotfiles/.bash_profile ~/.bash_profile
+  rm -f ~/.bash_profile && ln -sv ~/Documents/repos/mydotfiles/.bash_profile ~/.bash_profile
   echo Linking .gitconfig
-  rm -f ~/.gitconfig && ln -sv ~/Documents/repo/mydotfiles/.gitconfig ~/.gitconfig
+  rm -f ~/.gitconfig && ln -sv ~/Documents/repos/mydotfiles/.gitconfig ~/.gitconfig
   echo Linking .vimrc
-  rm -f ~/.vimrc && ln -sv ~/Documents/repo/mydotfiles/.vimrc ~/.vimrc
-  echo Linking karabiner.json
-  rm -f ~/.config/karabiner/karabiner.json && \
-    ln -sv ~/Documents/repo/mydotfiles/karabiner.json ~/.config/karabiner/karabiner.json
+  rm -f ~/.vimrc && ln -sv ~/Documents/repos/mydotfiles/.vimrc ~/.vimrc
+# We need a fix for the following.  Karabiner dir isn't created until it's started for the
+# first time and we can't start it for the first time until we modify security settings.
+# We may be able to just make the dir but then karabiner.json might be overwritten (doubt it).
+#  echo Linking karabiner.json
+#  rm -f ~/.config/karabiner/karabiner.json && \
+#    ln -sv ~/Documents/repos/mydotfiles/karabiner.json ~/.config/karabiner/karabiner.json
 }
 
 _vscode() {
