@@ -30,6 +30,8 @@ main() {
   _wireshark
   _go
   _vscode
+  _chrome
+  _firefox
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -73,7 +75,7 @@ _awscli() {
 
 _docker() {
   #Does this install everything needed like downloading and installing from web?
-  brew install docker
+  brew cask install docker
 }
 
 _terraform() {
@@ -187,6 +189,14 @@ _vscode() {
   # allows scrolling
   defaults write -g ApplePressAndHoldEnabled -bool false
   #TODO Figure out how to include VSCODE settings
+}
+
+_chrome() {
+  brew cask install google-chrome
+}
+
+_firefox() {
+  brew cask install firefox
 }
 
 main
