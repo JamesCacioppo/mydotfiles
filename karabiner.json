@@ -15,49 +15,49 @@
                     "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
-                  {
-                  	"description": "Ctrl + space becomes enter",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "spacebar",
-                          "modifiers": {
-                            "mandatory": [
-                              "left_control"
-                            ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "return_or_enter"
-                          }
-                        ],
-                        "type": "basic"
-                    } 
-                	]
-								},
-                {
-                  	"description": "shift + space becomes delete",
-                    "manipulators": [
-                      {
-                        "from": {
-                          "key_code": "spacebar",
-                          "modifiers": {
-                            "mandatory": [
-                              "left_shift"
-                            ]
-                          }
-                        },
-                        "to": [
-                          {
-                            "key_code": "delete_or_backspace"
-                          }
-                        ],
-                        "type": "basic"
-                    } 
-                	]
-								}
-              ]
+                    {
+                        "description": "Ctrl + space becomes enter",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "return_or_enter"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "shift + space becomes delete",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
             },
             "devices": [
                 {
@@ -102,6 +102,19 @@
                             }
                         }
                     ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 34304,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
                 }
             ],
             "fn_function_keys": [
@@ -110,7 +123,7 @@
                         "key_code": "f1"
                     },
                     "to": {
-                        "key_code": "f1"
+                        "key_code": "mission_control"
                     }
                 },
                 {
