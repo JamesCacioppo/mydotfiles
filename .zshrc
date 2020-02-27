@@ -254,6 +254,13 @@ then
   defaults write com.apple.screencapture location $screencaploc
 fi
 
+# make sure hold and press is running for accented keys
+defaults read -g ApplePressAndHoldEnabled &> /dev/null
+if [ $? -ne - ] || [ $(defaults read -g ApplePressAndHoldEnabled) != 1 ]
+then
+  defaults write -g ApplePressAndHoldEnabled -bool true
+fi
+
 # set up ripgrep for bash and vim
 # --files: List files that would be searched but do not search
 # --no-ignore: Do not respect .gitignore, etc...
