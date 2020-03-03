@@ -1,8 +1,22 @@
 #!/bin/bash
-Prepare the base system by installing the necessary packages first.  Then
-install customizations like oh-my-zsh and Oh My Tmux!  Finally symlink all
-dotfiles to the repo.
-'
+# Prepare the base system by installing the necessary packages first.  Then
+# install customizations like oh-my-zsh and Oh My Tmux!  Finally symlink all
+# dotfiles to the repo.
+
+findHostOS() {
+  if -f /etc/redhat-release; then
+    os=redhat #if redhat-release exists then we can use yum and that's all we care about
+  else
+    system=$(uname -a)
+    if [[ $(echo $system | grep -i darwin | wc -l) == 1 ]]; then
+      os=mac
+    elif [[ $(echo $system | grep -i debian | wc -l) ==1 ]]; then
+      os=debian
+    elif [[ $(echo $system | grep -i arch | wc -l) == 1 ]]; then #TODO: verify the return of uname for archlinux
+      os=arch
+    fi
+  fi
+}
 
 main() {
   _dir
