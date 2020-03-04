@@ -34,6 +34,7 @@ main() {
   _firefox
   _tools_repo
   _nmap
+  _iproute2mac
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -207,6 +208,10 @@ _tools_repo() {
 
 _nmap() {
   brew install nmap
+}
+
+_iproute2mac() {
+  brew install iproute2mac
 }
 
 main
