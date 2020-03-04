@@ -33,6 +33,7 @@ main() {
   _chrome
   _firefox
   _tools_repo
+  _nmap
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -202,6 +203,10 @@ _firefox() {
 
 _tools_repo() {
   git clone https://github.com/JamesCacioppo/tools.git
+}
+
+_nmap() {
+  brew install nmap
 }
 
 main
