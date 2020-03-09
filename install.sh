@@ -1,8 +1,10 @@
 #!/bin/bash
-Prepare the base system by installing the necessary packages first.  Then
-install customizations like oh-my-zsh and Oh My Tmux!  Finally symlink all
-dotfiles to the repo.
-'
+#Prepare the base system by installing the necessary packages first.  Then
+#install customizations like oh-my-zsh and Oh My Tmux!  Finally symlink all
+#dotfiles to the repo.
+
+# TODO: Ask for repoDir when running script
+repoDir=~/Documents/repos
 
 main() {
   _dir
@@ -32,7 +34,7 @@ main() {
   _vscode
   _chrome
   _firefox
-  _tools_repo
+  toolsRepo
   _nmap
   _iproute2mac
 
@@ -126,7 +128,7 @@ _vim-plug() {
   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
-_vundle() {
+vundle() {
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
@@ -142,7 +144,7 @@ _tmux() {
   echo Installing tmux
   brew install tmux
   echo Clonging Oh My Tmux!
-  cd ~/Documents/repo && git clone https://github.com/JamesCacioppo/.tmux.git
+  git clone https://github.com/JamesCacioppo/.tmux.git $repoDir/.tmux
   rm ~/.tmux.conf
   echo Linking .tmux.conf and .tmux.conf.local
   ln -sv ~/Documents/repos/.tmux/.tmux.conf ~/.tmux.conf
@@ -202,8 +204,8 @@ _firefox() {
   brew cask install firefox
 }
 
-_tools_repo() {
-  git clone https://github.com/JamesCacioppo/tools.git
+toolsRepo() {
+  git clone https://github.com/JamesCacioppo/tools.git $repoDir/tools
 }
 
 _nmap() {
