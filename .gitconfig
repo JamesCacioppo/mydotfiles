@@ -14,6 +14,7 @@
 [color]
   ui = auto
 [alias]
+    br = branch -a
     st = status
     ss = !git st --short --branch
     ci = commit
