@@ -62,7 +62,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-prompt terraform)
+plugins=(git terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -191,6 +191,12 @@ function switch_to_sitebuilder() {
     gcloud config set compute/region us-east1
 }
 
+function switch_to_veoresources() {
+    gcloud config set project gs-site-builder
+    gcloud config set compute/zone europe-north1-a
+    gcloud config set compute/region europe-north1
+}
+
 function switch_to_customer() {
 		kubectl config use-context gke_gs-customer_us-east1_production-customer-01
 		gcloud config set project gs-customer
@@ -219,6 +225,16 @@ function auth_gcloud() {
 ###############################
 # My quircky little functions #
 ###############################
+# Add ssh keys
+function sshAdd() {
+  bash -xc "for i in `ls ~/.ssh`; do
+    if [ `file ~/.ssh/$i | grep "private key" | wc -l` == 1 ]; then
+      ssh-add -K ~/.ssh/$i
+    fi
+  done"
+}
+
+
 # cd to a repo
 function repo() {
 	cd ~/Documents/repos/$1
