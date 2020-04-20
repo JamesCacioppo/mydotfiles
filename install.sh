@@ -37,6 +37,7 @@ main() {
   toolsRepo
   _nmap
   _iproute2mac
+  _iperf
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -214,6 +215,10 @@ _nmap() {
 
 _iproute2mac() {
   brew install iproute2mac
+}
+
+_iperf() {
+  brew install iperf
 }
 
 main
