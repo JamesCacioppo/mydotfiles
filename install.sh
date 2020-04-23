@@ -38,6 +38,7 @@ main() {
   _nmap
   _iproute2mac
   _iperf
+  _gist
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -219,6 +220,10 @@ _iproute2mac() {
 
 _iperf() {
   brew install iperf
+}
+
+_gist() {
+  brew install gist
 }
 
 main
