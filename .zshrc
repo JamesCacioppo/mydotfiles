@@ -112,6 +112,7 @@ alias speed-test-curl='curl -o /dev/null http://speedtest.wdc01.softlayer.com/do
 alias speed-test-wget='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias git-email='git config user.email'
 alias fix-xcode-cli='xcode-select --install'
+alias teams_background='cd ~/Library/Application Support/Microsoft/Teams/Backgrounds/Uploads'
 
 ################
 # Docker stuff #
@@ -187,8 +188,8 @@ function switch_to_devstaging() {
 
 function switch_to_sitebuilder() {
     gcloud config set project gs-site-builder
-    gcloud config set compute/zone us-east1-c
-    gcloud config set compute/region us-east1
+    gcloud config set compute/zone us-east4-a
+    gcloud config set compute/region us-east4
 }
 
 function switch_to_veoresources() {
