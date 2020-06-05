@@ -227,37 +227,13 @@ function auth_gcloud() {
 # My quircky little functions #
 ###############################
 # Add ssh keys
-function sshAdd() {
-  bash -xc "for i in `ls ~/.ssh`; do
-    if [ `file ~/.ssh/$i | grep "private key" | wc -l` == 1 ]; then
-      ssh-add -K ~/.ssh/$i
-    fi
-  done"
+function add_ssh() {
+  ~/Documents/repos/mydotfiles/add_ssh_keys.sh
 }
-
 
 # cd to a repo
 function repo() {
 	cd ~/Documents/repos/$1
-}
-
-function tmuxdot() {
-    if [ -z "$1" ]
-    then
-        echo Please provide a commit message in quotes and re-run
-    else
-        start_dir=$(pwd) 
-        cd ~/
-        cp -v .tmux.conf.local ~/Documents/repos/.tmux
-        cd ~/Documents/repos/.tmux
-        {
-            git add .
-            git commit -m "$1"
-            git push
-        } 
-        cd $start_dir
-        unset start_dir
-    fi
 }
 
 ##################
