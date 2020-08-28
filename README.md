@@ -42,5 +42,5 @@ Ripgrep, and Fuzzy Finder.
 5. If you installed Karabiner you'll need to open it and edit OSX security settings.  Then configure Karabiner:
 
     ```
-    cd ~/.confg/karabiner/; ln -sv ~/Documents/repos/mydotfiles/karabiner.json .
+    cp ~/Documents/repos/mydotfiles/karabiner.json ./.config/karabiner/
     ```
