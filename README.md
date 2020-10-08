@@ -44,3 +44,5 @@ Ripgrep, and Fuzzy Finder.
     ```
     cp ~/Documents/repos/mydotfiles/karabiner.json ./.config/karabiner/
     ```
+
+6. Install Settings Sync extension in VS Code and pull down settings
