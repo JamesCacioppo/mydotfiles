@@ -265,3 +265,6 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 # set up fubectl
 [ -f ~/.vim/fubectl.source ] && source ~/.vim/fubectl.source
+
+# QMK repo location
+export QMK_HOME=~/Documents/repos/qmk_firmware
