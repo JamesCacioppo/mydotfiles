@@ -236,6 +236,14 @@ function repo() {
 	cd ~/Documents/repos/$1
 }
 
+# build keyboard firmware for spacecommander 60
+function build_flash_60() {
+  repo
+  cd keyboards/handwired/spacecommander/60
+  qmk compile -km default
+  qmk flash -kb handwired/spacecommander/60 -km default
+}
+
 ##################
 # Computer hacks #
 ##################
