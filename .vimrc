@@ -21,7 +21,8 @@ set ttyfast "fast scrolling
 set ruler "show row,column at bottom right of screen
 "set backspace=indent,eol,start
 set laststatus=2 "always show status line at bottom of window
-set relativenumber "show line number relative to cursor. disable with `set norelativenumber`
+"set relativenumber "show line number relative to cursor. disable with `set norelativenumber`
+set nu rnu
 set lazyredraw "helps with scrolling large files but may have delay issues when switching buffers
 "set mouse=a "allow using mouse to move and click, disabled due to copy paste problem
 set colorcolumn=80 "puts a vertical line out at 80 char for style guide
