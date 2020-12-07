@@ -46,3 +46,5 @@ Ripgrep, and Fuzzy Finder.
     ```
 
 6. Install Settings Sync extension in VS Code and pull down settings
+
+7. Configure iTerm for Tmux option keys.  The Tmux configs use the option + hjkl to navigate between panes.  Go to prefs -> Profiles -> Keys and set "Left Option Key" to "Esc+"

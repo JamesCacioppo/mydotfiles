@@ -58,14 +58,14 @@ _dir() {
 # we'll have problems with later functions
 
 _brew() {
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 }
 
 _iterm() {
 #  curl -L https://iterm2.com/downloads/stable/latest --output /tmp/iterm.zip
 #  unzip /tmp/iterm.zip
 #  mv /tmp/iterm.app /Applications/
-  brew cask install iterm2
+  brew install iterm2
 }
 
 _git() {
@@ -82,7 +82,7 @@ _awscli() {
 
 _docker() {
   #Does this install everything needed like downloading and installing from web?
-  brew cask install docker
+  brew install docker
 }
 
 _terraform() {
