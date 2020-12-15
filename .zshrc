@@ -62,7 +62,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git terraform)
+plugins=(git terraform kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,6 +113,7 @@ alias speed-test-wget='wget -O /dev/null http://speedtest.wdc01.softlayer.com/do
 alias git-email='git config user.email'
 alias fix-xcode-cli='xcode-select --install'
 alias teams_background='cd ~/Library/Application Support/Microsoft/Teams/Backgrounds/Uploads'
+alias k='kubectl'
 
 ################
 # Docker stuff #
