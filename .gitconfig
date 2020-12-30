@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = James Cacioppo
-	email = james.cacioppo@wartsila.com
+	email = james.m.cacioppo@gmail.com
 
 # To use SourceTree (on Mac) for viewing diffs:
 [difftool "sourcetree"]
@@ -42,3 +42,10 @@
 [core]
   excludesfile = /Users/jamescacioppo/.gitignore_global
   pager = less -FRX
+[pull]
+	rebase = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
