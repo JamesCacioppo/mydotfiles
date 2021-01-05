@@ -5,9 +5,9 @@
 
 # TODO: Ask for repoDir when running script
 repoDir=~/Documents/repos
+SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 main() {
-  checkDir
   moveRepo
   installBrew
   bundleInstall
@@ -37,20 +37,11 @@ checkBundleSuccess() {
   fi
 }
 
-checkDir() {
-  if [ -d ~/Documents/repos ]
-  then
-    cd ~/Documents/repos
-  else
-    mkdir -p ~/Documents/repos
-    cd ~/Documents/repos
-  fi
-}
-
+#TODO: add a check to see if the user already cloned the repo correctly.
 moveRepo() {
-  SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
   echo Moving the mydotfiles repo to ~/Documents/repos. This is an idempotent action.
-  mv $SCRIPTPATH ~/Documents/repos
+  mkdir -p ~/Documents/repos
+  echo "mv $SCRIPTPATH ~/Documents/repos/mydotfiles"
 }
 
 installBrew() {
