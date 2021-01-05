@@ -8,11 +8,16 @@
 These are my dot files.  They're meant to be deployed on a Mac but with a small
 ammount of modification they should work on Linux as well.  My bash profile
 includes some aliases and functions for making basic opperations simpler.  As 
-Apple has moved on to zsh I've largedly abandoned the bash profile, however.  My
-zsh config uses Oh-My-Zsh which is quite complete and fantastic.  Do try it if 
-you haven't.  The .vimrc file includes a bunch of settings and plugins to
-supercharge your VIM experience, of which some of the best are NERDtree,
-Ripgrep, and Fuzzy Finder.
+Apple has moved on to zsh I've largedly abandoned the bash profile and long ago
+migrated everything to my .zshrc.  My zsh config uses Oh-My-Zsh which is quite
+complete and fantastic.  Do try it if you haven't.  The .vimrc file includes a
+bunch of settings and plugins to supercharge your VIM experience, of which some
+of the best are NERDtree, Ripgrep, and Fuzzy Finder.
+
+Be advised that this will install Docker Desktop which will run automatically
+at boot.  Docker Desktop uses a lot of RAM so you may want to disable this or
+uninstall it completely.  There will be an error when you open a new terminal
+if Docker Desktop is not running, however.
 
 ## Quick Start
 

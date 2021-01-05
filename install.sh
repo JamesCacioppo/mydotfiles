@@ -7,38 +7,17 @@
 repoDir=~/Documents/repos
 
 main() {
-  _dir
-  _brew
-  _iterm
-  _git
-  _gcloud_sdk
-  _awscli
-  _docker
-  _terraform
-  _cmatrix
-  _derailed
-  _kubectl
-  _kubefwd
-  _dry
-  _minicom
-  _zsh
-  _vim-plug
-  _vundle
-  _fzf
-  _ripgrep
-  _tmux
-  _karabiner
-  _dotfiles
-  _wireshark
-  _go
-  _vscode
-  _chrome
-  _firefox
+  checkDir
+  moveRepo
+  installBrew
+  bundleInstall
+  installOhMyZsh
+  installVimPlug
+  installVundle
+  installOhMyTmux
+  deployDotFiles
+  configVScodeScrolling
   toolsRepo
-  _nmap
-  _iproute2mac
-  _iperf
-  _gist
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -46,7 +25,7 @@ main() {
   echo -e ":PlugInstall\n:PluginInstall"
 }
 
-_dir() {
+checkDir() {
   if [ -d ~/Documents/repos ]
   then
     cd ~/Documents/repos
@@ -54,67 +33,25 @@ _dir() {
     mkdir -p ~/Documents/repos
     cd ~/Documents/repos
   fi
-} #TODO: need to make sure we're running from ~/Documents/repo/mydotfiles or
-# we'll have problems with later functions
+}
 
-_brew() {
+moveRepo() {
+  SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+  echo Moving the mydotfiles repo to ~/Documents/repos. This is an idempotent action.
+  mv $SCRIPTPATH ~/Documents/repos
+}
+
+installBrew() {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 }
 
-_iterm() {
-#  curl -L https://iterm2.com/downloads/stable/latest --output /tmp/iterm.zip
-#  unzip /tmp/iterm.zip
-#  mv /tmp/iterm.app /Applications/
-  brew install iterm2
+bundleInstall() {
+  echo Installing from Brewfile
+  echo Executing -- brew bundle install
+  brew bundle install
 }
 
-_git() {
-  brew install git
-}
-
-_gcloud_sdk() {
-  brew cask install google-cloud-sdk
-}
-
-_awscli() {
-  brew install awscli
-}
-
-_docker() {
-  #Does this install everything needed like downloading and installing from web?
-  brew install docker
-}
-
-_terraform() {
-  brew install terraform
-}
-
-_cmatrix() {
-  brew install cmatrix
-}
-
-_derailed() {
-  brew install derailed/k9s/k9s
-}
-
-_kubctl() {
-  brew install kubectl
-}
-
-_kubefwd() {
-  brew install txn2/tap/kubefwd
-}
-
-_dry() {
-  brew tap moncho/dry; brew install dry
-}
-
-_minicom() {
-  #minicom is a utility for opening a tty console to Cisco using usb console port
-  brew install minicom
-}
-
-_zsh() {
+installOhMyZsh() {
   #first check to make sure zsh is def shell and set it if not
   if [[ $PATH != /bin/zsh ]]
   then
@@ -125,26 +62,16 @@ _zsh() {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
-_vim-plug() {
+installVimPlug() {
   curl -fLo ~/.vim/autoload/plug.vim \
   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
-vundle() {
+installVundle() {
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
-_fzf() {
-  brew install fzf
-}
-
-_ripgrep() {
-  brew install ripgrep
-}
-
-_tmux() {
-  echo Installing tmux
-  brew install tmux
+installOhMyTmux() {
   echo Clonging Oh My Tmux!
   git clone https://github.com/JamesCacioppo/.tmux.git $repoDir/.tmux
   rm ~/.tmux.conf
@@ -153,27 +80,7 @@ _tmux() {
   ln -sv ~/Documents/repos/.tmux/.tmux.conf.local ~/.tmux.conf.local
 }
 
-_karabiner() {
-  echo Installing Karabiner Elements
-  brew cask install karabiner-elements
-}
-
-_wireshark() {
-  echo Installing Wireshark
-  brew cask install wireshark
-}
-
-_go() {
-  echo Installing go
-  brew install go
-}
-
-_vagrant() {
-  echo Installing Vagrant
-  brew cask install vagrant
-}
-
-_dotfiles() {
+deployDotFiles() {
   echo Linking .zshrc
   rm -f ~/.zshrc && ln -sv ~/Documents/repos/mydotfiles/.zshrc ~/.zshrc
   echo Linking .bash_profile
@@ -190,40 +97,14 @@ _dotfiles() {
 #    ln -sv ~/Documents/repos/mydotfiles/karabiner.json ~/.config/karabiner/karabiner.json
 }
 
-_vscode() {
-  brew cask install visual-studio-code
-  # Must change this global setting to that pressing and holding hjkl actually
+configVScodeScrolling() {
+  # Must change this global setting so that pressing and holding hjkl actually
   # allows scrolling
   defaults write -g ApplePressAndHoldEnabled -bool false
-  #TODO Figure out how to include VSCODE settings
-}
-
-_chrome() {
-  brew cask install google-chrome
-}
-
-_firefox() {
-  brew cask install firefox
 }
 
 toolsRepo() {
   git clone https://github.com/JamesCacioppo/tools.git $repoDir/tools
-}
-
-_nmap() {
-  brew install nmap
-}
-
-_iproute2mac() {
-  brew install iproute2mac
-}
-
-_iperf() {
-  brew install iperf
-}
-
-_gist() {
-  brew install gist
 }
 
 main
