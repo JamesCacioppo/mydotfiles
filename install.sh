@@ -9,7 +9,6 @@ repoDir=~/Documents/repos
 main() {
   checkDir
   moveRepo
-  installXcodeCommandLineTools
   installBrew
   bundleInstall
   checkBundleSuccess
