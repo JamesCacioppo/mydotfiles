@@ -21,19 +21,16 @@ if Docker Desktop is not running, however.
 
 ## Quick Start
 
-1. Install Xcode from App Store. You'll eventually need it run make.
-
-2. Clone this repo to ~/Documents/repos. This part is important because the symlinking function expects this location.
+2. Clone this repo to your local storage.  You can download it directly or you can clone it using git.
 
     ```
-    mkdir -p ~/Documents/repos; cd ~/Documents/repos
     git clone git@github.com:JamesCacioppo/mydotfiles.git
     ```
 
-3. Run the install script. If you don't want a program installed, like Karabiner, then comment its function out of main()
+3. Run the install script. If you don't want a program installed, like Karabiner, then remove it from the Brewfile.
 
     ```
-    cd ~/Documents/repos/mydotfiles
+    cd mydotfiles
     ./install.sh
     ```
 

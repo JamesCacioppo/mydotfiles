@@ -11,6 +11,7 @@ main() {
   moveRepo
   installBrew
   bundleInstall
+  checkBundleSuccess
   installOhMyZsh
   installVimPlug
   installVundle
@@ -23,6 +24,17 @@ main() {
   echo successfully installed.
   echo -e "\nThe next step is to start vim and execute the following two commands:"
   echo -e ":PlugInstall\n:PluginInstall"
+}
+
+checkBundleSuccess() {
+  brew bundle check
+  if [[ $? == 0 ]]; then
+    echo All Brewfile dependencies have been installed.
+  else
+    echo brew bundle check returned non-zero exit code.  There was a problem during installation.
+    echo Exiting installation.
+    exit 1
+  fi
 }
 
 checkDir() {
