@@ -37,11 +37,10 @@ checkBundleSuccess() {
   fi
 }
 
-#TODO: add a check to see if the user already cloned the repo correctly.
 moveRepo() {
   echo Moving the mydotfiles repo to ~/Documents/repos. This is an idempotent action.
   mkdir -p ~/Documents/repos
-  echo "mv $SCRIPTPATH ~/Documents/repos/mydotfiles"
+  mv $SCRIPTPATH ~/Documents/repos/mydotfiles
 }
 
 installBrew() {
@@ -60,6 +59,9 @@ installOhMyZsh() {
   then
     chsh -s /bin/zsh 
   fi
+  #set perms so oh my zsh will load completions
+  chmod g-w,o-w /usr/local/share/zsh
+  chmod g-w,o-w /usr/local/share/zsh/site-functions
   #install zsh
   export ZSH="$HOME/.oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
