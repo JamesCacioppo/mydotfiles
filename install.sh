@@ -12,13 +12,13 @@ main() {
   installBrew
   bundleInstall
   checkBundleSuccess
-  installOhMyZsh
   installVimPlug
   installVundle
   installOhMyTmux
   deployDotFiles
   configVScodeScrolling
   toolsRepo
+  installOhMyZsh
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
