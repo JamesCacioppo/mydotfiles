@@ -7,32 +7,36 @@
 
 These are my dot files.  They're meant to be deployed on a Mac but with a small
 ammount of modification they should work on Linux as well.  My bash profile
-includes some aliases and functions for making basic opperations simpler.  As 
-Apple has moved on to zsh I've largedly abandoned the bash profile, however.  My
-zsh config uses Oh-My-Zsh which is quite complete and fantastic.  Do try it if 
-you haven't.  The .vimrc file includes a bunch of settings and plugins to
-supercharge your VIM experience, of which some of the best are NERDtree,
-Ripgrep, and Fuzzy Finder.
+includes some aliases and functions for making basic opperations simpler but
+hasn't been maintained in some time.  As Apple has moved on to zsh I've
+largedly abandoned the bash profile and long ago migrated everything to my
+.zshrc.  My zsh config uses Oh-My-Zsh which is quite complete and fantastic.
+Do try it if you haven't.  The .vimrc file includes a bunch of settings and
+plugins to supercharge your VIM experience, of which some of the best are
+NERDtree, Ripgrep, and Fuzzy Finder.
+
+Be advised that this will install Docker Desktop which will run automatically
+at boot.  Docker Desktop uses a lot of RAM so you may want to disable this or
+uninstall it completely.  There will be an error when you open a new terminal
+if Docker Desktop is not running, however.  This is easily resolved by
+commenting out the three aliases with the `docker` command in them.
 
 ## Quick Start
 
-1. Install Xcode from App Store. You'll eventually need it run make.
-
-2. Clone this repo to ~/Documents/repos. This part is important because the symlinking function expects this location.
+2. Clone this repo to your local storage.  You can download it directly or you can clone it using git.
 
     ```
-    mkdir -p ~/Documents/repos; cd ~/Documents/repos
     git clone git@github.com:JamesCacioppo/mydotfiles.git
     ```
 
-3. Run the install script. If you don't want a program installed, like Karabiner, then comment its function out of main()
+3. Run the install script. If you don't want a program installed, like Karabiner, then remove it from the Brewfile.
 
     ```
-    cd ~/Documents/repos/mydotfiles
+    cd mydotfiles
     ./install.sh
     ```
 
-4. Run vim and install the plugins
+4. Run vim and install the plugins.  The first time you run VIM you'll get errors because of missing plugins.  Just ignore them.
 
     ```
     :PlugInstall
