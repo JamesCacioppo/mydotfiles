@@ -12,13 +12,13 @@ main() {
   installBrew
   bundleInstall
   checkBundleSuccess
+  installOhMyZsh
   installVimPlug
   installVundle
   installOhMyTmux
   deployDotFiles
   configVScodeScrolling
   toolsRepo
-  installOhMyZsh
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -64,7 +64,7 @@ installOhMyZsh() {
   chmod g-w,o-w /usr/local/share/zsh/site-functions
   #install zsh
   export ZSH="$HOME/.oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 }
 
 installVimPlug() {
