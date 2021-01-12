@@ -81,41 +81,10 @@ function gcloud_config_get() {
 
 # Functions to change gcloud environments
 function switch_to_demo() {
-    gcloud config set project gs-gems-demo
+    gcloud config set project
     gcloud config set compute/zone us-east1-c
     gcloud config set compute/region us-east1
 }
-
-function switch_to_devstaging() {
-    gcloud config set project gs-dev-staging
-    gcloud config set compute/zone us-east4-a
-    gcloud config set compute/region us-east4
-}
-
-function switch_to_sitebuilder() {
-    gcloud config set project gs-site-builder
-    gcloud config set compute/zone us-east1-c
-    gcloud config set compute/region us-east1
-}
-
-function switch_to_customer() {
-		kubectl config use-context gke_gs-customer_us-east1_production-customer-01
-		gcloud config set project gs-customer
-		gcloud config set compute/zone us-east1-b
-		gcloud config set compute/region us-east1
-}
-
-function switch_to_infra() {
-    gcloud config set project gs-infra
-    gcloud config set compute/region us-east4
-    gcloud config set compute/zone us-east4-a
-}
-
-function get_cluster_creds() {
-		gcloud container clusters get-credentials devstagingcluster1  --zone us-east4-a  --project gs-dev-staging
-		gcloud container clusters get-credentials production-customer-01  --region us-east1  --project gs-customer
-}
-
 # Function to auth gcloud
 function auth_gcloud() {
     gcloud auth login
