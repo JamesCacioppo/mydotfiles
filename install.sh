@@ -92,6 +92,9 @@ deployDotFiles() {
   rm -f ~/.bash_profile && ln -sv ~/Documents/repos/mydotfiles/.bash_profile ~/.bash_profile
   echo Linking .gitconfig
   rm -f ~/.gitconfig && ln -sv ~/Documents/repos/mydotfiles/.gitconfig ~/.gitconfig
+  echo Unsetting any global user configs
+  git config --global --unset user.name
+  git config --global --unset user.email
   echo Linking .vimrc
   rm -f ~/.vimrc && ln -sv ~/Documents/repos/mydotfiles/.vimrc ~/.vimrc
 # We need a fix for the following.  Karabiner dir isn't created until it's started for the
