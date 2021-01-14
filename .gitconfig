@@ -1,7 +1,5 @@
 # This is Git's per-user configuration file.
 [user]
-	name = James Cacioppo
-	email = james.m.cacioppo@gmail.com
 
 # To use SourceTree (on Mac) for viewing diffs:
 [difftool "sourcetree"]
