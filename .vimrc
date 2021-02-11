@@ -1,7 +1,20 @@
 "===========================Vim settings section==============================
 
+" Configure cursor types based on modes. These settings are for tmux in iterm2
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[3 q" "SR = REPLACE mode
+let &t_EI.="\e[2 q" "EI = NORMAL mode (ELSE)
+"Cursor settings:
+"
+" 1 -> blinking block
+" 2 -> solid block 
+" 3 -> blinking underscore
+" 4 -> solid underscore
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
+
 set nocompatible "set by default. Compatible will disable features to make compatible with vi.
-set nowrap "obvi
+set nowrap "disable line wrapping
 set wildmenu "enable that auto complete menu at bottom of screen
 set wildmode=list:longest "something to do with the wildmenu
 set visualbell "flash screen instead of audible bell
@@ -79,10 +92,13 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
+"Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Above is the recommended installation method
 
 " Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+"Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Apparently gocode isn't maintained anymore. Find another autocompletion tool
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
