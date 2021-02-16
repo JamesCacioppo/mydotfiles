@@ -110,6 +110,7 @@ alias run_jenkins="cd ~/;docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:
 alias eval-ssh-agent='eval "$(ssh-agent -s)"'
 alias speed-test-curl='curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias speed-test-wget='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
+alias git-user='git config user.name'
 alias git-email='git config user.email'
 alias fix-xcode-cli='xcode-select --install'
 alias teams_background='cd ~/Library/Application Support/Microsoft/Teams/Backgrounds/Uploads'
