@@ -91,6 +91,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH=~/go/bin:~/Documents/repos/tools:~/Library/Python/3.7/bin:$PATH
+export PATH="${PATH}:${HOME}/.krew/bin" # Required to execute kubectl plugins installed by krew
 alias ll="ls -al"
 alias gs="git status"
 alias gl="git log --oneline --graph --decorate"
