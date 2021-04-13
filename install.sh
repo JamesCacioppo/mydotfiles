@@ -19,6 +19,7 @@ main() {
   deployDotFiles
   configVScodeScrolling
   toolsRepo
+  installZshKubectlPrompt
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -65,6 +66,7 @@ installOhMyZsh() {
   #install zsh
   export ZSH="$HOME/.oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
 }
 
 installVimPlug() {
@@ -126,6 +128,10 @@ installXcodeCommandLineTools() {
 	    end tell
 	  end tell
 	EOD
+}
+
+installZshKubectlPrompt() {
+  git clone git@github.com:superbrothers/zsh-kubectl-prompt.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-kubectl-prompt
 }
 
 main
