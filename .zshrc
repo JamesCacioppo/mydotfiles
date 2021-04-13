@@ -118,14 +118,6 @@ alias fix-xcode-cli='xcode-select --install'
 alias teams_background='cd ~/Library/Application Support/Microsoft/Teams/Backgrounds/Uploads'
 alias k='kubectl'
 
-################
-# Docker stuff #
-################
-# open bash shell in docker container $1
-function dbash() {
-	docker exec -it $1 /bin/bash
-}
-
 ######################
 # Goolge Cloud stuff #
 ######################
@@ -136,7 +128,7 @@ if [ -f '/Users/jamescacioppo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/j
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jamescacioppo/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jamescacioppo/google-cloud-sdk/completion.zsh.inc'; fi
 
-# gssh function from Vinod
+## gssh functions
 function _gcloud_ssh() {
     local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
     if [[ -n $instance ]]; then
@@ -146,30 +138,30 @@ function _gcloud_ssh() {
     fi
 }
 
-alias gssh=_gcloud_ssh #alias to Vinod's gssh function
-
-function _gcloud_stop() {
-    local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
-    if [[ -n $instance ]]; then
-        echo "gcloud compute instances stop $instance"
-        eval "gcloud compute instances stop $instance"
-        return $?
-    fi
-}
-
-alias gstop=_gcloud_stop
-
-function _gcloud_start() {
-    local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
-    if [[ -n $instance ]]; then
-        echo "gcloud compute instances start $instance"
-        eval "gcloud compute instances start $instance"
-        return $?
-    fi
-}
-
-alias gstart=_gcloud_start
-
+#alias gssh=_gcloud_ssh #alias to Vinod's gssh function
+#
+#function _gcloud_stop() {
+#    local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
+#    if [[ -n $instance ]]; then
+#        echo "gcloud compute instances stop $instance"
+#        eval "gcloud compute instances stop $instance"
+#        return $?
+#    fi
+#}
+#
+#alias gstop=_gcloud_stop
+#
+#function _gcloud_start() {
+#    local instance=$(gcloud compute instances list | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk '{print $1}')
+#    if [[ -n $instance ]]; then
+#        echo "gcloud compute instances start $instance"
+#        eval "gcloud compute instances start $instance"
+#        return $?
+#    fi
+#}
+#
+#alias gstart=_gcloud_start
+#
 # Show current gcloud config
 function gcloud_config_get() {
     gcloud config get-value project
@@ -177,12 +169,12 @@ function gcloud_config_get() {
     gcloud config get-value compute/zone
 }
 
-# Functions to change gcloud environments
-function switch_to_demo() {
-    gcloud config set project
-    gcloud config set compute/zone us-east1-c
-    gcloud config set compute/region us-east1
-}
+## Functions to change gcloud environments
+#function switch_to_demo() {
+#    gcloud config set project
+#    gcloud config set compute/zone us-east1-c
+#    gcloud config set compute/region us-east1
+#}
 
 ###############################
 # My quircky little functions #
@@ -194,7 +186,7 @@ function add_ssh() {
 
 # cd to a repo
 function repo() {
-	cd ~/Documents/repos/$1
+  cd ~/Documents/repos/$1
 }
 
 # build keyboard firmware for spacecommander 60
@@ -209,12 +201,12 @@ function build_flash_60() {
 # Computer hacks #
 ##################
 # make sure print screen files go to Pictures
-screencaploc=$HOME/Pictures #where we want screen caps to go
-defaults read com.apple.screencapture location &> /dev/null #just need to get exit code for next test
-if [ $? -ne 0 ] || [ $screencaploc != $(defaults read com.apple.screencapture location) ]
-then
-  defaults write com.apple.screencapture location $screencaploc
-fi
+#screencaploc=$HOME/Pictures #where we want screen caps to go
+#defaults read com.apple.screencapture location &> /dev/null #just need to get exit code for next test
+#if [ $? -ne 0 ] || [ $screencaploc != $(defaults read com.apple.screencapture location) ]
+#then
+#  defaults write com.apple.screencapture location $screencaploc
+#fi
 
 # This was causing issues with key repeats when using VIM extension in VScode
 # make sure hold and press is running for accented keys
@@ -233,7 +225,7 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # set up fubectl
-[ -f ~/.vim/fubectl.source ] && source ~/.vim/fubectl.source
+#[ -f ~/.vim/fubectl.source ] && source ~/.vim/fubectl.source
 
 # QMK repo location
 export QMK_HOME=~/Documents/repos/qmk_firmware
