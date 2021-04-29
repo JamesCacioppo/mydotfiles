@@ -62,7 +62,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git terraform kubectl minikube alias-finder)
+plugins=(git kubectl poetry)
+#plugins=(git terraform kubectl minikube alias-finder zsh-kubectl-prompt)
 ZSH_ALIAS_FINDER_AUTOMATIC=false
 
 source $ZSH/oh-my-zsh.sh
