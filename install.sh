@@ -19,6 +19,7 @@ main() {
   deployDotFiles
   configVScodeScrolling
   toolsRepo
+  additionalUserConfig
 
   echo Install routine complete.  Please verify that all packages have been
   echo successfully installed.
@@ -126,6 +127,12 @@ installXcodeCommandLineTools() {
 	    end tell
 	  end tell
 	EOD
+}
+
+additionalUserConfig() {
+	#Configure tab auto-completion for poetry
+	mkdir $ZSH_CUSTOM/plugins/poetry
+	poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
 }
 
 main
