@@ -118,7 +118,8 @@ alias git-email='git config user.email'
 alias fix-xcode-cli='xcode-select --install'
 alias teams_background='cd ~/Library/Application Support/Microsoft/Teams/Backgrounds/Uploads'
 alias k='kubectl'
-
+# Save new config as a file and then specify it to import into ~/.kube/config
+alias kconfigimport='k konfig import --save'
 ################
 # Docker stuff #
 ################
