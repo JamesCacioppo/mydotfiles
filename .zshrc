@@ -120,6 +120,7 @@ alias teams_background='cd ~/Library/Application Support/Microsoft/Teams/Backgro
 alias k='kubectl'
 # Save new config as a file and then specify it to import into ~/.kube/config
 alias kconfigimport='k konfig import --save'
+alias tf='terraform'
 ################
 # Docker stuff #
 ################
