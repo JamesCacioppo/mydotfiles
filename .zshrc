@@ -121,6 +121,7 @@ alias k='kubectl'
 # Save new config as a file and then specify it to import into ~/.kube/config
 alias kconfigimport='k konfig import --save'
 alias tf='terraform'
+alias gr='cd $(git root)'
 ################
 # Docker stuff #
 ################
