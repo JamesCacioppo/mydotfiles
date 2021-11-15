@@ -62,7 +62,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl poetry)
+#plugins=(git kubectl poetry)
+plugins=(git kubectl)
 #plugins=(git terraform kubectl minikube alias-finder zsh-kubectl-prompt)
 ZSH_ALIAS_FINDER_AUTOMATIC=false
 
@@ -107,9 +108,6 @@ alias vimf="vim \$(fzf)"
 alias appsanywhere="sudo spctl --master-disable" # Pref> Sec&Priv > Allow apps from anywhere
 alias appsnowhere="sudo spctl --master-enable"
 alias socat='socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\"'
-alias chrome="docker run -e DISPLAY=192.168.225.32:0 --privileged jess/chrome"
-alias dbs="bootstrap=`docker ps | grep bootstrap | awk '{print $1}'`; echo bootstrap = $bootstrap"
-alias run_jenkins="cd ~/;docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts"
 alias eval-ssh-agent='eval "$(ssh-agent -s)"'
 alias speed-test-curl='curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
 alias speed-test-wget='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
@@ -122,23 +120,15 @@ alias k='kubectl'
 alias kconfigimport='k konfig import --save'
 alias tf='terraform'
 alias gr='cd $(git root)'
-################
-# Docker stuff #
-################
-# open bash shell in docker container $1
-function dbash() {
-	docker exec -it $1 /bin/bash
-}
-
+alias flush_dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 ######################
 # Goolge Cloud stuff #
 ######################
-
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jamescacioppo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jamescacioppo/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/jamescacioppo/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jamescacioppo/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'; fi
 
 # gssh function from Vinod
 function _gcloud_ssh() {
@@ -213,12 +203,14 @@ function build_flash_60() {
 # Computer hacks #
 ##################
 # make sure print screen files go to Pictures
-screencaploc=$HOME/Pictures #where we want screen caps to go
-defaults read com.apple.screencapture location &> /dev/null #just need to get exit code for next test
-if [ $? -ne 0 ] || [ $screencaploc != $(defaults read com.apple.screencapture location) ]
-then
-  defaults write com.apple.screencapture location $screencaploc
-fi
+function screen_capture() {
+  screencaploc=$HOME/Pictures #where we want screen caps to go
+  defaults read com.apple.screencapture location &> /dev/null #just need to get exit code for next test
+  if [ $? -ne 0 ] || [ $screencaploc != $(defaults read com.apple.screencapture location) ]
+  then
+    defaults write com.apple.screencapture location $screencaploc
+  fi
+}
 
 # This was causing issues with key repeats when using VIM extension in VScode
 # make sure hold and press is running for accented keys
@@ -237,7 +229,7 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # set up fubectl
-[ -f ~/.vim/fubectl.source ] && source ~/.vim/fubectl.source
+#[ -f ~/.vim/fubectl.source ] && source ~/.vim/fubectl.source
 
 # QMK repo location
 export QMK_HOME=~/Documents/repos/qmk_firmware
