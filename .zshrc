@@ -233,3 +233,5 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 # QMK repo location
 export QMK_HOME=~/Documents/repos/qmk_firmware
+
+fortune | cowsay
