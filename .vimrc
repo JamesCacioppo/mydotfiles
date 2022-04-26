@@ -1,5 +1,8 @@
 "===========================Vim settings section==============================
 
+" Make backspace work like any other editor
+set backspace=indent,eol,start
+
 " Configure cursor types based on modes. These settings are for tmux in iterm2
 let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_SR.="\e[3 q" "SR = REPLACE mode
