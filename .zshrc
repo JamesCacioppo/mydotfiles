@@ -92,9 +92,11 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+export PATH=/usr/local/Cellar/openjdk/18.0.1:$PATH
 export PATH=~/go/bin:~/Documents/repos/tools:~/Library/Python/3.7/bin:$PATH
 export PATH="${PATH}:${HOME}/.krew/bin" # Required to execute kubectl plugins installed by krew
+# The following causes java to use openjdk but we need the oracle java to run policy manager
+#export JAVA_HOME=/usr/local/Cellar/openjdk/18.0.1
 alias ll="ls -al"
 alias gs="git status"
 alias gl="git log --oneline --graph --decorate"
