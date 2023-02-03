@@ -92,9 +92,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH=/usr/local/Cellar/openjdk/18.0.1:$PATH
-export PATH=~/go/bin:~/Documents/repos/tools:~/Library/Python/3.7/bin:$PATH
-export PATH="${PATH}:${HOME}/.krew/bin" # Required to execute kubectl plugins installed by krew
+export PATH=/usr/local/Cellar/openjdk/18.0.1:~/go/bin:~/Documents/repos/tools:~/.krew/bin:$PATH
+# Required to execute kubectl plugins installed by krew
 # The following causes java to use openjdk but we need the oracle java to run policy manager
 #export JAVA_HOME=/usr/local/Cellar/openjdk/18.0.1
 alias ll="ls -al"
@@ -123,6 +122,7 @@ alias kconfigimport='k konfig import --save'
 alias tf='terraform'
 alias gr='cd $(git root)'
 alias flush_dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+alias docker-prune='docker system prune -af'
 ######################
 # Goolge Cloud stuff #
 ######################
@@ -237,3 +237,6 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export QMK_HOME=~/Documents/repos/qmk_firmware
 
 fortune | cowsay
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
