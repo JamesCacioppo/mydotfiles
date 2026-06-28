@@ -1,4 +1,6 @@
-fortune | cowsay
+if command -v fortune >/dev/null 2>&1 && command -v cowsay >/dev/null 2>&1; then
+  fortune | cowsay
+fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -101,10 +103,16 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH=/usr/local/Cellar/openjdk/18.0.1:~/go/bin:~/Documents/repos/tools:~/.krew/bin:$PATH
+if [[ -z "$HOMEBREW_PREFIX" ]] && command -v brew >/dev/null 2>&1; then
+  export HOMEBREW_PREFIX="$(brew --prefix)"
+fi
+if [[ -n "$HOMEBREW_PREFIX" && -d "$HOMEBREW_PREFIX/opt/openjdk/bin" ]]; then
+  export PATH="$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
+fi
+export PATH="$HOME/go/bin:$HOME/Documents/repos/tools:$HOME/.krew/bin:$PATH"
 # Required to execute kubectl plugins installed by krew
 # The following causes java to use openjdk but we need the oracle java to run policy manager
-#export JAVA_HOME=/usr/local/Cellar/openjdk/18.0.1
+#export JAVA_HOME="$HOMEBREW_PREFIX/opt/openjdk"
 alias ll="ls -al"
 alias gs="git status"
 alias gl="git log --oneline --graph --decorate"
@@ -113,7 +121,7 @@ alias preview="fzf --preview 'cat {}'"
 alias previewbinary="fzf --preview 'strings {}'"
 alias preview100="fzf --preview 'head -100 {}'"
 alias p="find . -type f | fzf --preview 'head -100 {}'"
-alias vf="fzf --bind 'crtl-v:execute(vim {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
+alias vf="fzf --bind 'ctrl-v:execute(vim {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 alias vimf="vim \$(fzf)"
 alias appsanywhere="sudo spctl --master-disable" # Pref> Sec&Priv > Allow apps from anywhere
 alias appsnowhere="sudo spctl --master-enable"
@@ -135,11 +143,19 @@ alias docker-prune='docker system prune -af'
 ######################
 # Goolge Cloud stuff #
 ######################
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'; fi
+# The next lines update PATH and enable shell command completion for gcloud.
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+  for gcloud_sdk_dir in \
+    "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" \
+    "$HOMEBREW_PREFIX/Caskroom/gcloud-cli/latest/google-cloud-sdk" \
+    "$HOMEBREW_PREFIX/share/google-cloud-sdk"; do
+    if [[ -d "$gcloud_sdk_dir" ]]; then
+      [[ -f "$gcloud_sdk_dir/path.zsh.inc" ]] && . "$gcloud_sdk_dir/path.zsh.inc"
+      [[ -f "$gcloud_sdk_dir/completion.zsh.inc" ]] && . "$gcloud_sdk_dir/completion.zsh.inc"
+      break
+    fi
+  done
+fi
 
 # gssh function from Vinod
 function _gcloud_ssh() {
@@ -246,8 +262,12 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export QMK_HOME=~/Documents/repos/qmk_firmware
 
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if [[ -x "$PYENV_ROOT/bin/pyenv" ]]; then
+  export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+if command -v pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

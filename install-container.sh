@@ -4,7 +4,9 @@
 #dotfiles to the repo.
 
 # TODO: Ask for repoDir when running script
-repoDir=~/Documents/repos
+repoDir="$HOME/Documents/repos"
+repoName="mydotfiles"
+targetRepo="$repoDir/$repoName"
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 main() {
@@ -39,14 +41,58 @@ checkBundleSuccess() {
 
 moveRepo() {
   echo Moving the mydotfiles repo to ~/Documents/repos. This is an idempotent action.
-  mkdir -p ~/Documents/repos
-  mv $SCRIPTPATH ~/Documents/repos/mydotfiles
+  mkdir -p "$repoDir"
+
+  if [[ "$SCRIPTPATH" == "$targetRepo" ]]; then
+    echo "Repo is already at $targetRepo."
+    return
+  fi
+
+  if [[ -e "$targetRepo" ]]; then
+    echo "$targetRepo already exists. Not moving $SCRIPTPATH over it."
+    exit 1
+  fi
+
+  mv "$SCRIPTPATH" "$targetRepo"
 }
 
 installBrew() {
-  echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" > /dev/null
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.zprofile
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  if command -v brew >/dev/null 2>&1; then
+    echo Homebrew is already installed.
+    configureBrewShellenv
+    loadBrewShellenv
+    return
+  fi
+
+  if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    echo Homebrew is already installed.
+    configureBrewShellenv
+    loadBrewShellenv
+    return
+  fi
+
+  echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" > /dev/null
+  configureBrewShellenv
+  loadBrewShellenv
+}
+
+configureBrewShellenv() {
+  touch /root/.zprofile
+  grep -qxF 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' /root/.zprofile || \
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.zprofile
+}
+
+loadBrewShellenv() {
+  local brew_path
+
+  if brew_path="$(command -v brew 2>/dev/null)"; then
+    eval "$("$brew_path" shellenv)"
+    return
+  fi
+
+  if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 }
 
 bundleInstall() {
@@ -57,16 +103,23 @@ bundleInstall() {
 
 installOhMyZsh() {
   #first check to make sure zsh is def shell and set it if not
-  if [[ $PATH != /bin/zsh ]]
+  local zsh_path
+  zsh_path="$(command -v zsh || true)"
+  if [[ -n "$zsh_path" && "$SHELL" != "$zsh_path" ]]
   then
-    chsh -s /bin/zsh 
+    chsh -s "$zsh_path"
   fi
   #set perms so oh my zsh will load completions
-  chmod g-w,o-w /usr/local/share/zsh
-  chmod g-w,o-w /usr/local/share/zsh/site-functions
+  for zsh_dir in /usr/local/share/zsh /usr/local/share/zsh/site-functions /home/linuxbrew/.linuxbrew/share/zsh /home/linuxbrew/.linuxbrew/share/zsh/site-functions; do
+    [[ -d "$zsh_dir" ]] && chmod g-w,o-w "$zsh_dir"
+  done
   #install zsh
   export ZSH="$HOME/.oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  if [[ -d "$ZSH" ]]; then
+    echo Oh My Zsh is already installed.
+  else
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  fi
 }
 
 installVimPlug() {
@@ -75,40 +128,76 @@ installVimPlug() {
 }
 
 installVundle() {
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  cloneRepo https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
 }
 
 installOhMyTmux() {
-  echo Clonging Oh My Tmux!
-  git clone https://github.com/JamesCacioppo/.tmux.git $repoDir/.tmux
-  rm ~/.tmux.conf
+  echo Cloning Oh My Tmux!
+  cloneRepo https://github.com/JamesCacioppo/.tmux.git "$repoDir/.tmux"
   echo Linking .tmux.conf and .tmux.conf.local
-  ln -sv ~/Documents/repos/.tmux/.tmux.conf ~/.tmux.conf
-  ln -sv ~/Documents/repos/.tmux/.tmux.conf.local ~/.tmux.conf.local
+  linkFile "$repoDir/.tmux/.tmux.conf" "$HOME/.tmux.conf"
+  linkFile "$repoDir/.tmux/.tmux.conf.local" "$HOME/.tmux.conf.local"
 }
 
 deployDotFiles() {
   echo Linking .zshrc
-  rm -f ~/.zshrc && ln -sv ~/Documents/repos/mydotfiles/.zshrc ~/.zshrc
+  linkFile "$targetRepo/.zshrc" "$HOME/.zshrc"
   echo Linking .bash_profile
-  rm -f ~/.bash_profile && ln -sv ~/Documents/repos/mydotfiles/.bash_profile ~/.bash_profile
+  linkFile "$targetRepo/.bash_profile" "$HOME/.bash_profile"
   echo Linking .gitconfig
-  rm -f ~/.gitconfig && ln -sv ~/Documents/repos/mydotfiles/.gitconfig ~/.gitconfig
+  linkFile "$targetRepo/.gitconfig" "$HOME/.gitconfig"
   echo Unsetting any global user configs
-  git config --global --unset user.name
-  git config --global --unset user.email
+  git config --global --unset user.name || true
+  git config --global --unset user.email || true
   echo Linking .vimrc
-  rm -f ~/.vimrc && ln -sv ~/Documents/repos/mydotfiles/.vimrc ~/.vimrc
+  linkFile "$targetRepo/.vimrc" "$HOME/.vimrc"
 }
 
 toolsRepo() {
-  git clone https://github.com/JamesCacioppo/tools.git $repoDir/tools
+  cloneRepo https://github.com/JamesCacioppo/tools.git "$repoDir/tools"
 }
 
 additionalUserConfig() {
-	#Configure tab auto-completion for poetry
-	mkdir $ZSH_CUSTOM/plugins/poetry
-	poetry completions zsh > $ZSH_CUSTOM/plugins/poetry/_poetry
+		#Configure tab auto-completion for poetry
+		if command -v poetry >/dev/null 2>&1; then
+			mkdir -p "$ZSH_CUSTOM/plugins/poetry"
+			poetry completions zsh > "$ZSH_CUSTOM/plugins/poetry/_poetry"
+		fi
+}
+
+cloneRepo() {
+  local source="$1"
+  local destination="$2"
+
+  if [[ -d "$destination/.git" ]]; then
+    echo "$destination already exists. Updating with fast-forward only."
+    git -C "$destination" pull --ff-only
+  elif [[ -e "$destination" ]]; then
+    echo "$destination exists and is not a git repo. Skipping clone from $source."
+  else
+    git clone "$source" "$destination"
+  fi
+}
+
+linkFile() {
+  local source="$1"
+  local destination="$2"
+
+  mkdir -p "$(dirname "$destination")"
+
+  if [[ -L "$destination" && "$(readlink "$destination")" == "$source" ]]; then
+    echo "$destination is already linked."
+    return
+  fi
+
+  if [[ -e "$destination" || -L "$destination" ]]; then
+    local backup
+    backup="${destination}.backup.$(date +%Y%m%d%H%M%S)"
+    echo "Backing up $destination to $backup"
+    mv "$destination" "$backup"
+  fi
+
+  ln -sv "$source" "$destination"
 }
 
 main

@@ -101,7 +101,7 @@ alias preview="fzf --preview 'cat {}'"
 alias previewbinary="fzf --preview 'strings {}'"
 alias preview100="fzf --preview 'head -100 {}'"
 alias p="find . -type f | fzf --preview 'head -100 {}'"
-alias vf="fzf --bind 'crtl-v:execute(vim {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
+alias vf="fzf --bind 'ctrl-v:execute(vim {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 alias vimf="vim \$(fzf)"
 alias eval-ssh-agent='eval "$(ssh-agent -s)"'
 alias git-user='git config user.name'
@@ -111,4 +111,3 @@ alias k='kubectl'
 alias kconfigimport='k konfig import --save'
 alias tf='terraform'
 alias gr='cd $(git root)'
-

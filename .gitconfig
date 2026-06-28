@@ -35,7 +35,7 @@
     gn = goodness
     gnc = goodness --cached
     fa = fetch --all
-    pom = push origin master
+    pom = push origin main
     root = rev-parse --show-toplevel
 [core]
   excludesfile = /Users/jamescacioppo/.gitignore_global
